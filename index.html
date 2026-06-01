@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inner Living Interiors & Exteriors</title>
+  <meta name="description" content="Inner Living Interiors & Exteriors in Harare. Interior design, custom furniture, curtains, upholstery, fabrication, staircases, pool fencing and exterior installations.">
+  <style>
+    :root {
+      --teal: #4d737a;
+      --deep: #132224;
+      --ink: #1f2625;
+      --paper: #f7f4ed;
+      --soft: #e8e1d4;
+      --clay: #b67b54;
+      --sage: #70846e;
+      --white: #fffdf8;
+      --line: rgba(31, 38, 37, .14);
+      --shadow: 0 22px 60px rgba(19, 34, 36, .18);
+      --radius: 8px;
+      --ease-premium: cubic-bezier(.2, .72, .22, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px clamp(18px, 4vw, 54px);
+      background: rgba(247, 244, 237, .86);
+      border-bottom: 1px solid rgba(31, 38, 37, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 3px solid var(--teal);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      display: block;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--teal);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .brand-text span {
+      display: block;
+      color: rgba(31, 38, 37, .64);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2.4px;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2vw, 24px);
+      color: rgba(31, 38, 37, .72);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    nav a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    nav a:not(.button)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 2px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .28s ease;
+    }
+
+    nav a:not(.button):hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 760;
+      box-shadow: 0 14px 30px rgba(77, 115, 122, .24);
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #41656b;
+      box-shadow: 0 18px 38px rgba(77, 115, 122, .3);
+    }
+
+    .button:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 22px rgba(77, 115, 122, .2);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--deep);
+      border-color: rgba(31, 38, 37, .22);
+      box-shadow: none;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+      gap: clamp(28px, 4vw, 72px);
+      align-items: center;
+      padding: 118px clamp(18px, 5vw, 76px) 46px;
+      background:
+        linear-gradient(90deg, rgba(247, 244, 237, .98) 0%, rgba(247, 244, 237, .9) 44%, rgba(247, 244, 237, .72) 100%),
+        url("assets/wallpaper.jpg") center/cover fixed;
+    }
+
+    .eyebrow {
+      color: var(--clay);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.8px;
+      margin: 0 0 18px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 7vw, 94px);
+      line-height: .93;
+      letter-spacing: 0;
+      margin-bottom: 24px;
+      color: var(--deep);
+      max-width: 760px;
+    }
+
+    .lead {
+      font-size: clamp(17px, 2vw, 21px);
+      color: rgba(31, 38, 37, .76);
+      max-width: 660px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 650px;
+    }
+
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 15px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(22px, 3vw, 34px);
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: rgba(31, 38, 37, .66);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .hero-visual {
+      display: grid;
+      grid-template-columns: 1fr .72fr;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: clamp(390px, 64vh, 680px);
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      animation: heroFloatIn .9s ease both;
+    }
+
+    .hero-visual .side {
+      height: clamp(290px, 47vh, 520px);
+      margin-bottom: 8%;
+      animation-delay: .14s;
+    }
+
+    section {
+      padding: clamp(64px, 8vw, 118px) clamp(18px, 5vw, 76px);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, .74fr) minmax(260px, 1fr);
+      gap: clamp(20px, 4vw, 70px);
+      align-items: end;
+      max-width: 1180px;
+      margin: 0 auto 38px;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--deep);
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+
+    .section-head p {
+      color: rgba(31, 38, 37, .72);
+      margin-bottom: 0;
+      font-size: 17px;
+    }
+
+    .about {
+      background: var(--white);
+    }
+
+    .service-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: #fbfaf5;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 210px;
+      box-shadow: 0 0 0 rgba(19, 34, 36, 0);
+      transition:
+        transform .62s var(--ease-premium),
+        border-color .62s var(--ease-premium),
+        box-shadow .62s var(--ease-premium),
+        background .62s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(255, 253, 248, .9), rgba(182, 123, 84, .12) 48%, rgba(77, 115, 122, .1));
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .62s var(--ease-premium), transform .62s var(--ease-premium);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(77, 115, 122, .4);
+      background: var(--white);
+      box-shadow: 0 24px 54px rgba(19, 34, 36, .14);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+      transform: none;
+    }
+
+    .service-card h3 {
+      color: var(--teal);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: rgba(31, 38, 37, .72);
+      font-size: 15px;
+    }
+
+    .service-card li {
+      padding: 8px 0;
+      border-top: 1px solid rgba(31, 38, 37, .08);
+    }
+
+    .portfolio {
+      background: #e7ece8;
+    }
+
+    .project-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--deep);
+      box-shadow: 0 0 0 rgba(19, 34, 36, 0);
+      transition: transform .68s var(--ease-premium), box-shadow .68s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .project:nth-child(1), .project:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      opacity: .88;
+      transition: transform .9s var(--ease-premium), opacity .75s var(--ease-premium), filter .75s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .project:hover img {
+      transform: scale(1.065);
+      opacity: .74;
+      filter: saturate(1.04) contrast(1.04);
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(19, 34, 36, .22);
+    }
+
+    .project::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(105deg, transparent 20%, rgba(255, 253, 248, .18) 42%, transparent 58%);
+      transform: translateX(-115%);
+      transition: transform .95s var(--ease-premium);
+    }
+
+    .project:hover::after {
+      transform: translateX(115%);
+    }
+
+    .project-content {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 22px;
+      color: var(--white);
+      background: linear-gradient(0deg, rgba(19, 34, 36, .88), rgba(19, 34, 36, 0));
+      min-height: 54%;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      transition: transform .62s var(--ease-premium);
+      z-index: 1;
+    }
+
+    .project:hover .project-content {
+      transform: translateY(-4px);
+    }
+
+    .project-content span {
+      color: rgba(255, 253, 248, .76);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 750;
+    }
+
+    .project-content h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1;
+      margin: 8px 0 0;
+    }
+
+    .tips {
+      background: var(--deep);
+      color: var(--white);
+    }
+
+    .tips h2 { color: var(--white); }
+    .tips .section-head p { color: rgba(255, 253, 248, .72); }
+
+    .tip-row {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tip {
+      min-height: 430px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      opacity: 0;
+      transform: translateY(28px);
+      box-shadow: 0 0 0 rgba(19, 34, 36, 0);
+      transition:
+        opacity .8s ease,
+        transform .68s var(--ease-premium),
+        box-shadow .68s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .tip.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .tip img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      transition: transform .95s var(--ease-premium), filter .72s var(--ease-premium);
+    }
+
+    .tip::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(19, 34, 36, .18), rgba(19, 34, 36, .82));
+      z-index: -1;
+      transition: background .72s var(--ease-premium);
+    }
+
+    .tip:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .24);
+    }
+
+    .tip.visible:hover {
+      transform: translateY(-8px);
+    }
+
+    .tip:hover img {
+      transform: scale(1.055);
+      filter: saturate(1.06) contrast(1.04);
+    }
+
+    .tip:hover::after {
+      background: linear-gradient(180deg, rgba(19, 34, 36, .08), rgba(19, 34, 36, .78));
+    }
+
+    .tip div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 24px;
+    }
+
+    .tip h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .tip p {
+      color: rgba(255, 253, 248, .84);
+      margin-bottom: 0;
+    }
+
+    .testimonials {
+      background: var(--white);
+    }
+
+    .testimonial-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .quote {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: #fbfaf5;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 0 rgba(19, 34, 36, 0);
+      transition:
+        transform .62s var(--ease-premium),
+        border-color .62s var(--ease-premium),
+        box-shadow .62s var(--ease-premium),
+        background .62s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .quote::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at top right, rgba(77, 115, 122, .13), transparent 42%);
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity .62s var(--ease-premium), transform .62s var(--ease-premium);
+    }
+
+    .quote:hover {
+      transform: translateY(-7px);
+      border-color: rgba(77, 115, 122, .38);
+      background: var(--white);
+      box-shadow: 0 22px 48px rgba(19, 34, 36, .12);
+    }
+
+    .quote:hover::before {
+      opacity: 1;
+      transform: none;
+    }
+
+    .stars {
+      color: var(--teal);
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--deep);
+      font-size: clamp(20px, 2vw, 25px);
+      line-height: 1.28;
+    }
+
+    .quote cite {
+      margin-top: 22px;
+      display: block;
+      color: rgba(31, 38, 37, .62);
+      font-style: normal;
+      font-weight: 720;
+    }
+
+    .visit {
+      background: #efe6d7;
+    }
+
+    .visit-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, .8fr) minmax(320px, 1.2fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .visit-panel {
+      background: var(--deep);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: clamp(28px, 4vw, 46px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 430px;
+    }
+
+    .visit-panel h2 { color: var(--white); }
+    .visit-panel p { color: rgba(255, 253, 248, .76); }
+    .visit-panel dl { margin: 24px 0; }
+    .visit-panel div + div { margin-top: 18px; }
+    .visit-panel dt {
+      color: rgba(255, 253, 248, .58);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+    .visit-panel dd {
+      margin: 5px 0 0;
+      font-size: 18px;
+      font-weight: 720;
+    }
+
+    .map {
+      min-height: 430px;
+      border: 0;
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--soft);
+    }
+
+    .motion-reveal {
+      opacity: .08;
+      transform: translateY(24px);
+      filter: blur(4px);
+      transition:
+        opacity .72s ease,
+        transform .72s var(--ease-premium),
+        filter .72s ease,
+        box-shadow .62s var(--ease-premium),
+        border-color .62s var(--ease-premium),
+        background .62s var(--ease-premium);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .motion-reveal.visible {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+
+    .motion-reveal.visible.service-card:hover,
+    .motion-reveal.visible.project:hover {
+      transform: translateY(-8px);
+    }
+
+    .motion-reveal.visible.quote:hover {
+      transform: translateY(-7px);
+    }
+
+    .section-head.motion-reveal {
+      transform: translateY(18px);
+    }
+
+    @keyframes heroFloatIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(.985);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    footer {
+      padding: 34px clamp(18px, 5vw, 76px);
+      background: var(--deep);
+      color: rgba(255, 253, 248, .68);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      nav a:not(.button) { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-visual {
+        grid-template-columns: 1fr 1fr;
+      }
+      .section-head,
+      .visit-wrap {
+        grid-template-columns: 1fr;
+      }
+      .service-grid,
+      .tip-row,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .project:nth-child(1), .project:nth-child(4) {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-header {
+        padding: 12px 16px;
+      }
+      .brand-text span { display: none; }
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      nav .button {
+        display: none;
+      }
+      .hero {
+        display: block;
+        padding-top: 96px;
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+      }
+      .hero > div {
+        width: 100%;
+        max-width: 342px;
+      }
+      .hero > div + div {
+        margin-top: 28px;
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 1.7px;
+        overflow-wrap: anywhere;
+      }
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+      }
+      .hero-actions .button {
+        width: 100%;
+        max-width: 100%;
+      }
+      h1 {
+        font-size: clamp(40px, 11vw, 48px);
+        overflow-wrap: break-word;
+      }
+      .lead {
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
+      .hero-stats,
+      .hero-visual,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual img,
+      .hero-visual .side {
+        height: auto;
+        max-height: none;
+        margin: 0;
+      }
+      .project {
+        min-height: 320px;
+      }
+      footer {
+        display: block;
+      }
+      footer span {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .motion-reveal,
+      .tip {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Inner Living home">
+      <span class="brand-mark">il</span>
+      <span class="brand-text">
+        <strong>inner living</strong>
+        <span>Interiors & Exteriors</span>
+      </span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#tips">Tips</a>
+      <a href="#visit">Visit</a>
+      <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Established 2001 - Harare, Zimbabwe</p>
+        <h1 id="hero-title">Designed for rest. Styled for luxury.</h1>
+        <p class="lead">Inner Living is a one-stop interiors and exteriors studio for refined homes, lodges and offices, from design consultation and fabric selection to custom furniture, fabrication and installation.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
+          <a class="button secondary" href="tel:+263783106505">Call +263 78 310 6505</a>
+        </div>
+        <div class="hero-stats" aria-label="Inner Living highlights">
+          <div class="stat"><strong>25</strong><span>Years of craft and design</span></div>
+          <div class="stat"><strong>1</strong><span>Studio for interiors and exteriors</span></div>
+          <div class="stat"><strong>2001</strong><span>Founded by Dave and Tracey Ashwin</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="assets/hero-bedroom.jpg" alt="">
+        <img class="side" src="assets/staircase-interior.jpg" alt="">
+      </div>
+    </section>
+
+    <section id="services" class="about" aria-labelledby="services-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Business & Services</p>
+          <h2 id="services-title">Everything interiors, with exterior craft to match.</h2>
+        </div>
+        <p>They began as a wrought iron and fabrication company, then expanded into interior design, curtains, upholstery, soft furnishings, custom furniture, wallpaper, blinds and complete fit-outs. The result is a practical, beautiful service that can measure, manufacture and install under one roof.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <h3>Interior design</h3>
+          <ul>
+            <li>Design consultations and colour selections</li>
+            <li>2D and 3D renders, mood boards and space planning</li>
+            <li>Wallpaper, fabrics, linen, lighting and floor design</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <h3>Soft furnishings</h3>
+          <ul>
+            <li>Curtain manufacture, roller blinds and window treatments</li>
+            <li>Upholstery, cushions and high-end fabric sourcing</li>
+            <li>Custom headboards, chairs, ottomans and lounge suites</li>
+          </ul>
+        </article>
+        <article class="service-card">
+          <h3>Exterior fabrication</h3>
+          <ul>
+            <li>Balustrades, railings, staircases and pool fencing</li>
+            <li>Gates, burglar bars, secure enclosures and steel frames</li>
+            <li>Doors, windows, decking, structural steel and timber works</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" class="portfolio" aria-labelledby="work-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What They Have Done</p>
+          <h2 id="work-title">Projects shaped around comfort, detail and durability.</h2>
+        </div>
+        <p>Their profile references lodge, residential and commercial work, including Matetsi Lodge, Bayete Lodge, Gorges Lodge, Zambezi Sands, Rukomechi Lodge and the Alliance Insurance Head Office.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project">
+          <img src="assets/pool-fence.jpg" alt="Custom steel, wood and cable pool fence installed around a pool.">
+          <div class="project-content"><span>Pool fencing</span><h3>Custom steel, wood and cable installations</h3></div>
+        </article>
+        <article class="project">
+          <img src="assets/entryway.jpg" alt="Modern entry with timber doors, black frames and a steel canopy.">
+          <div class="project-content"><span>Exterior finish</span><h3>Doors, windows and architectural details</h3></div>
+        </article>
+        <article class="project">
+          <img src="assets/staircase-exterior.jpg" alt="Exterior steel staircase with balustrades on a brick building.">
+          <div class="project-content"><span>Fabrication</span><h3>Staircases and balustrades made to order</h3></div>
+        </article>
+        <article class="project">
+          <img src="assets/wallpaper.jpg" alt="Soft interior nook with wallpaper, curtains and a cushioned bench.">
+          <div class="project-content"><span>Interior styling</span><h3>Layered textures, wallpapers and restful rooms</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="tips" class="tips" aria-labelledby="tips-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Design Tips</p>
+          <h2 id="tips-title">Small choices that make a room feel finished.</h2>
+        </div>
+        <p>These editorial tips fade in as you scroll, keeping the site calm while still giving visitors useful styling direction.</p>
+      </div>
+      <div class="tip-row">
+        <article class="tip">
+          <img src="assets/tip-odd.jpg" alt="Styled table with vases and greenery wall.">
+          <div>
+            <h3>Style in odd numbers</h3>
+            <p>Group objects in threes or fives so shelves and tables feel natural, balanced and considered.</p>
+          </div>
+        </article>
+        <article class="tip">
+          <img src="assets/tip-calm.jpg" alt="Calm neutral bedroom with layered textures.">
+          <div>
+            <h3>Keep the palette calm</h3>
+            <p>Use soft neutrals or muted shades, then layer texture through rugs, throws, cushions and warm lighting.</p>
+          </div>
+        </article>
+        <article class="tip">
+          <img src="assets/services-poster.jpg" alt="Interior lounge image with Inner Living services poster.">
+          <div>
+            <h3>Measure before making</h3>
+            <p>Start with the real proportions of the room, then choose fabric, furniture and finishes that fit the way you live.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="testimonials" aria-labelledby="testimonial-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Client Testimonials</p>
+          <h2 id="testimonial-title">Trusted for speed, finish and good taste.</h2>
+        </div>
+        <p>Visitors get social proof before the final consultation prompt, with real client words taken from the supplied testimonial material.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="quote">
+          <div>
+            <div class="stars" aria-label="Five star review">★★★★★</div>
+            <blockquote>“I truly appreciate the lovely pink curtains. I absolutely adore them, and I'm grateful for your suggestions and choices in fabrics.”</blockquote>
+          </div>
+          <cite>Inner Living Client</cite>
+        </article>
+        <article class="quote">
+          <div>
+            <div class="stars" aria-label="Five star review">★★★★★</div>
+            <blockquote>“Very happy, especially with the quick turn around. Well done Sheila and team.”</blockquote>
+          </div>
+          <cite>Inner Living Client</cite>
+        </article>
+        <article class="quote">
+          <div>
+            <div class="stars" aria-label="Five star review">★★★★★</div>
+            <blockquote>“They look fantastic, and my husband even remarked on how smart they are. Thank you!”</blockquote>
+          </div>
+          <cite>Inner Living Client</cite>
+        </article>
+      </div>
+    </section>
+
+    <section id="visit" class="visit" aria-labelledby="visit-title">
+      <div class="visit-wrap">
+        <div class="visit-panel">
+          <div>
+            <p class="eyebrow">Location & Consultations</p>
+            <h2 id="visit-title">Visit the Borrowdale studio.</h2>
+            <p>Find Inner Living at Borrowdale Racecourse, Harare. Use the map to open directions, or start with a quick consultation message.</p>
+            <dl>
+              <div>
+                <dt>Address</dt>
+                <dd>Borrowdale Racecourse, Harare, Zimbabwe</dd>
+              </div>
+              <div>
+                <dt>Phone / WhatsApp</dt>
+                <dd><a href="tel:+263783106505">+263 78 310 6505</a></dd>
+              </div>
+              <div>
+                <dt>Hours</dt>
+                <dd>Mon-Fri 8:00-4:30, Sat 9:00-12:30</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
+            <a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Inner%20Living%20Borrowdale%20Racecourse%20Harare%20Zimbabwe" target="_blank" rel="noreferrer">Open in Google Maps</a>
+          </div>
+        </div>
+        <iframe
+          class="map"
+          title="Google map showing Inner Living near Borrowdale Racecourse, Harare"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Inner%20Living%20Borrowdale%20Racecourse%20Harare%20Zimbabwe&output=embed">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>inner living interiors & exteriors</strong>
+    <span>Borrowdale Racecourse, Harare - +263 78 310 6505 - interiors@innerliving.co.zw</span>
+  </footer>
+
+  <script>
+    const revealTargets = document.querySelectorAll(
+      ".section-head, .service-card, .project, .quote, .visit-panel, .map"
+    );
+    revealTargets.forEach((target, index) => {
+      target.classList.add("motion-reveal");
+      target.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 90}ms`);
+    });
+
+    const tips = document.querySelectorAll(".tip");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    tips.forEach((tip, index) => {
+      tip.style.transitionDelay = `${index * 120}ms`;
+      observer.observe(tip);
+    });
+    revealTargets.forEach((target) => observer.observe(target));
+  </script>
+</body>
+</html>
