@@ -123,6 +123,112 @@
       transform: scaleX(1);
       transform-origin: left;
     }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(31, 38, 37, .16);
+      border-radius: 50%;
+      background: rgba(255, 253, 248, .86);
+      color: var(--deep);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(19, 34, 36, .08);
+      transition:
+        transform .42s var(--ease-premium),
+        border-color .42s var(--ease-premium),
+        background .42s var(--ease-premium),
+        box-shadow .42s var(--ease-premium);
+    }
+
+    .menu-toggle:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 115, 122, .36);
+      background: var(--white);
+      box-shadow: 0 18px 36px rgba(19, 34, 36, .12);
+    }
+
+    .menu-toggle span {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform .38s var(--ease-premium), opacity .28s ease;
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: clamp(18px, 4vw, 54px);
+      width: min(310px, calc(100vw - 32px));
+      padding: 10px;
+      border: 1px solid rgba(31, 38, 37, .12);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .96);
+      box-shadow: 0 26px 70px rgba(19, 34, 36, .18);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      transform: translateY(-10px) scale(.98);
+      transform-origin: top right;
+      pointer-events: none;
+      transition:
+        opacity .34s ease,
+        transform .42s var(--ease-premium);
+    }
+
+    .site-header.menu-open .mobile-menu {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 7px;
+      color: var(--deep);
+      font-weight: 760;
+      transition: background .28s ease, color .28s ease, transform .28s var(--ease-premium);
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(77, 115, 122, .1);
+      color: var(--teal);
+      transform: translateX(3px);
+    }
+
+    .mobile-menu a.accent {
+      margin-top: 6px;
+      background: var(--teal);
+      color: var(--white);
+      justify-content: center;
+    }
+
+    .mobile-menu a.accent:hover {
+      background: #41656b;
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
@@ -769,6 +875,9 @@
 
     @media (max-width: 980px) {
       nav a:not(.button) { display: none; }
+      .menu-toggle {
+        display: inline-flex;
+      }
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -797,11 +906,21 @@
       .site-header {
         padding: 12px 16px;
       }
+      .mobile-menu {
+        position: fixed;
+        top: 68px;
+        left: 16px;
+        right: auto;
+        width: min(342px, calc(100vw - 32px));
+      }
       .brand-text span { display: none; }
       .brand-mark {
         width: 36px;
         height: 36px;
         font-size: 16px;
+      }
+      nav {
+        display: none;
       }
       nav .button {
         display: none;
@@ -905,6 +1024,19 @@
       <a href="#visit">Visit</a>
       <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#tips">Design tips</a>
+      <a href="#visit">Visit us</a>
+      <a href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a review</a>
+      <a class="accent" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
+    </div>
   </header>
 
   <main id="top">
@@ -1110,6 +1242,34 @@
   </footer>
 
   <script>
+    const header = document.querySelector(".site-header");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    const closeMenu = () => {
+      header.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = header.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target)) closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+
     const revealTargets = document.querySelectorAll(
       ".section-head, .service-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
