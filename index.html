@@ -620,6 +620,44 @@
       font-weight: 720;
     }
 
+    .review-cta {
+      max-width: 1180px;
+      margin: 18px auto 0;
+      padding: 20px;
+      border: 1px solid rgba(77, 115, 122, .22);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #fbfaf5, rgba(232, 225, 212, .56));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: 0 0 0 rgba(19, 34, 36, 0);
+      transition:
+        transform .62s var(--ease-premium),
+        border-color .62s var(--ease-premium),
+        box-shadow .62s var(--ease-premium);
+    }
+
+    .review-cta:hover {
+      transform: translateY(-5px);
+      border-color: rgba(77, 115, 122, .4);
+      box-shadow: 0 20px 44px rgba(19, 34, 36, .1);
+    }
+
+    .review-cta strong {
+      display: block;
+      color: var(--deep);
+      font-size: 18px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .review-cta span {
+      display: block;
+      color: rgba(31, 38, 37, .66);
+      font-size: 14px;
+    }
+
     .visit {
       background: #efe6d7;
     }
@@ -697,6 +735,10 @@
 
     .motion-reveal.visible.quote:hover {
       transform: translateY(-7px);
+    }
+
+    .motion-reveal.visible.review-cta:hover {
+      transform: translateY(-5px);
     }
 
     .section-head.motion-reveal {
@@ -800,6 +842,13 @@
       .lead {
         max-width: 100%;
         overflow-wrap: break-word;
+      }
+      .review-cta {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .review-cta .button {
+        width: 100%;
       }
       .hero-stats,
       .hero-visual,
@@ -913,6 +962,13 @@
             <li>Doors, windows, decking, structural steel and timber works</li>
           </ul>
         </article>
+      </div>
+      <div class="review-cta">
+        <div>
+          <strong>Worked with Inner Living?</strong>
+          <span>Share your experience and help future clients choose with confidence.</span>
+        </div>
+        <a class="button" href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a Google review</a>
       </div>
     </section>
 
@@ -1055,7 +1111,7 @@
 
   <script>
     const revealTargets = document.querySelectorAll(
-      ".section-head, .service-card, .project, .quote, .visit-panel, .map"
+      ".section-head, .service-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
