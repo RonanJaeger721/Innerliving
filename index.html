@@ -19,6 +19,7 @@
       --shadow: 0 22px 60px rgba(19, 34, 36, .18);
       --radius: 8px;
       --ease-premium: cubic-bezier(.2, .72, .22, 1);
+      --carousel-speed: 2800ms;
     }
 
     * { box-sizing: border-box; }
@@ -352,6 +353,7 @@
       box-shadow: var(--shadow);
       animation: heroFloatIn .9s ease both;
       isolation: isolate;
+      border: 1px solid rgba(255, 253, 248, .28);
     }
 
     .carousel-slide {
@@ -359,14 +361,22 @@
       inset: 0;
       margin: 0;
       opacity: 0;
-      transform: scale(1.03);
-      transition: opacity 1s ease, transform 5.6s var(--ease-premium);
+      transform: scale(1.055) translateX(18px);
+      clip-path: inset(0 0 0 9%);
+      filter: blur(2px) saturate(.96);
+      transition:
+        opacity .78s ease,
+        transform var(--carousel-speed) var(--ease-premium),
+        clip-path .9s var(--ease-premium),
+        filter .85s ease;
       pointer-events: none;
     }
 
     .carousel-slide.active {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translateX(0);
+      clip-path: inset(0);
+      filter: blur(0) saturate(1.04);
       pointer-events: auto;
     }
 
@@ -374,6 +384,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transform: scale(1.02);
+      transition: transform var(--carousel-speed) linear;
+    }
+
+    .carousel-slide.active img {
+      transform: scale(1.09);
     }
 
     .carousel-slide::after {
@@ -413,6 +429,13 @@
       line-height: 1;
       letter-spacing: 0;
       max-width: 520px;
+      transition: opacity .35s ease, transform .35s var(--ease-premium);
+    }
+
+    .carousel-meta.changing span,
+    .carousel-meta.changing strong {
+      opacity: 0;
+      transform: translateY(6px);
     }
 
     .carousel-dots {
@@ -437,6 +460,29 @@
       border-color: var(--white);
       border-radius: 999px;
       background: var(--white);
+    }
+
+    .carousel-progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      z-index: 3;
+      background: rgba(255, 253, 248, .18);
+    }
+
+    .carousel-progress span {
+      display: block;
+      height: 100%;
+      width: 100%;
+      transform-origin: left;
+      background: linear-gradient(90deg, var(--white), rgba(255, 253, 248, .48));
+      animation: carouselProgress var(--carousel-speed) linear infinite;
+    }
+
+    .hero-carousel:hover .carousel-progress span {
+      animation-play-state: paused;
     }
 
     section {
@@ -928,6 +974,11 @@
       }
     }
 
+    @keyframes carouselProgress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
     footer {
       padding: 34px clamp(18px, 5vw, 76px);
       background: var(--deep);
@@ -1130,25 +1181,25 @@
       </div>
       <div class="hero-visual" aria-label="Inner Living project image carousel">
         <div class="hero-carousel">
-          <figure class="carousel-slide active">
+          <figure class="carousel-slide active" data-kicker="Wallpapers" data-title="Colour, texture and mood for every room.">
             <img src="assets/wallpaper.jpg" alt="Soft interior nook with wallpaper, curtains and a cushioned bench.">
           </figure>
-          <figure class="carousel-slide">
+          <figure class="carousel-slide" data-kicker="Exterior finish" data-title="Timber, glass and steel details with presence.">
             <img src="assets/entryway.jpg" alt="Modern exterior entry with timber doors, glass panels and black steel canopy.">
           </figure>
-          <figure class="carousel-slide">
+          <figure class="carousel-slide" data-kicker="Railings & fencing" data-title="Steel, timber, composite and cable installations.">
             <img src="assets/pool-fence.jpg" alt="Custom steel, wood and cable pool fence around a swimming pool.">
           </figure>
-          <figure class="carousel-slide">
+          <figure class="carousel-slide" data-kicker="Interior fabrication" data-title="Curved staircases built with craft and precision.">
             <img src="assets/staircase-interior.jpg" alt="Interior curved staircase with timber treads and steel railings.">
           </figure>
-          <figure class="carousel-slide">
+          <figure class="carousel-slide" data-kicker="Exterior fabrication" data-title="Statement staircases and balustrades made to order.">
             <img src="assets/staircase-exterior.jpg" alt="Exterior steel staircase with balustrades on a brick building.">
           </figure>
           <div class="carousel-meta">
             <div>
-              <span>Crafted interiors and exteriors</span>
-              <strong>Renovation, fabrication and finishing details in motion.</strong>
+              <span>Wallpapers</span>
+              <strong>Colour, texture and mood for every room.</strong>
             </div>
             <div class="carousel-dots" aria-label="Carousel navigation">
               <button class="carousel-dot active" type="button" aria-label="Show wallpaper styling"></button>
@@ -1158,6 +1209,7 @@
               <button class="carousel-dot" type="button" aria-label="Show exterior staircase"></button>
             </div>
           </div>
+          <div class="carousel-progress" aria-hidden="true"><span></span></div>
         </div>
       </div>
     </section>
@@ -1366,23 +1418,38 @@
     const carousel = document.querySelector(".hero-carousel");
     const carouselSlides = document.querySelectorAll(".carousel-slide");
     const carouselDots = document.querySelectorAll(".carousel-dot");
+    const carouselMeta = document.querySelector(".carousel-meta");
+    const carouselKicker = document.querySelector(".carousel-meta span");
+    const carouselTitle = document.querySelector(".carousel-meta strong");
+    const carouselProgress = document.querySelector(".carousel-progress span");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let activeSlide = 0;
     let carouselTimer;
 
     const showSlide = (index) => {
       activeSlide = (index + carouselSlides.length) % carouselSlides.length;
+      const nextSlide = carouselSlides[activeSlide];
       carouselSlides.forEach((slide, slideIndex) => {
         slide.classList.toggle("active", slideIndex === activeSlide);
       });
       carouselDots.forEach((dot, dotIndex) => {
         dot.classList.toggle("active", dotIndex === activeSlide);
       });
+      carouselMeta.classList.add("changing");
+      window.setTimeout(() => {
+        carouselKicker.textContent = nextSlide.dataset.kicker || "";
+        carouselTitle.textContent = nextSlide.dataset.title || "";
+        carouselMeta.classList.remove("changing");
+      }, 160);
+      carouselProgress.style.animation = "none";
+      carouselProgress.offsetHeight;
+      carouselProgress.style.animation = "";
     };
 
     const startCarousel = () => {
       if (reduceMotion || !carouselSlides.length) return;
-      carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 4200);
+      stopCarousel();
+      carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 2800);
     };
 
     const stopCarousel = () => {
