@@ -683,7 +683,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(19, 34, 36, .18), rgba(19, 34, 36, .82));
+      background: linear-gradient(180deg, rgba(19, 34, 36, .04), rgba(19, 34, 36, .18));
       z-index: -1;
       transition: background .72s var(--ease-premium);
     }
@@ -703,27 +703,7 @@
     }
 
     .tip:hover::after {
-      background: linear-gradient(180deg, rgba(19, 34, 36, .08), rgba(19, 34, 36, .78));
-    }
-
-    .tip div {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      padding: 24px;
-    }
-
-    .tip h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 30px;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .tip p {
-      color: rgba(255, 253, 248, .84);
-      margin-bottom: 0;
+      background: linear-gradient(180deg, rgba(19, 34, 36, 0), rgba(19, 34, 36, .08));
     }
 
     .testimonials {
@@ -1259,24 +1239,12 @@
       <div class="tip-row">
         <article class="tip">
           <img src="assets/tip-odd.jpg" alt="Styled table with vases and greenery wall.">
-          <div>
-            <h3>Style in odd numbers</h3>
-            <p>Group objects in threes or fives so shelves and tables feel natural, balanced and considered.</p>
-          </div>
         </article>
         <article class="tip">
           <img src="assets/tip-calm.jpg" alt="Calm neutral bedroom with layered textures.">
-          <div>
-            <h3>Keep the palette calm</h3>
-            <p>Use soft neutrals or muted shades, then layer texture through rugs, throws, cushions and warm lighting.</p>
-          </div>
         </article>
         <article class="tip">
           <img src="assets/services-poster.jpg" alt="Interior lounge image with Inner Living services poster.">
-          <div>
-            <h3>Measure before making</h3>
-            <p>Start with the real proportions of the room, then choose fabric, furniture and finishes that fit the way you live.</p>
-          </div>
         </article>
       </div>
     </section>
