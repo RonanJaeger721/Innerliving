@@ -287,8 +287,8 @@
     h1, h2, h3, p { margin-top: 0; }
     h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(48px, 7vw, 94px);
-      line-height: .93;
+      font-size: clamp(46px, 5.4vw, 72px);
+      line-height: .96;
       letter-spacing: 0;
       margin-bottom: 24px;
       color: var(--deep);
@@ -336,25 +336,104 @@
     }
 
     .hero-visual {
-      display: grid;
-      grid-template-columns: 1fr .72fr;
-      gap: 16px;
-      align-items: end;
+      min-width: 0;
     }
 
-    .hero-visual img {
-      width: 100%;
-      height: clamp(390px, 64vh, 680px);
-      object-fit: cover;
+    .hero-carousel {
+      position: relative;
+      height: clamp(430px, 64vh, 680px);
+      min-height: 430px;
+      overflow: hidden;
       border-radius: var(--radius);
+      background: var(--deep);
       box-shadow: var(--shadow);
       animation: heroFloatIn .9s ease both;
+      isolation: isolate;
     }
 
-    .hero-visual .side {
-      height: clamp(290px, 47vh, 520px);
-      margin-bottom: 8%;
-      animation-delay: .14s;
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 1s ease, transform 5.6s var(--ease-premium);
+      pointer-events: none;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(19, 34, 36, .08), rgba(19, 34, 36, .54));
+    }
+
+    .carousel-meta {
+      position: absolute;
+      left: clamp(18px, 3vw, 32px);
+      right: clamp(18px, 3vw, 32px);
+      bottom: clamp(18px, 3vw, 32px);
+      z-index: 2;
+      color: var(--white);
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .carousel-meta span {
+      display: block;
+      color: rgba(255, 253, 248, .72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .carousel-meta strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: 0;
+      max-width: 520px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 1px solid rgba(255, 253, 248, .72);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: width .34s var(--ease-premium), background .34s ease, border-color .34s ease;
+    }
+
+    .carousel-dot.active {
+      width: 28px;
+      border-color: var(--white);
+      border-radius: 999px;
+      background: var(--white);
     }
 
     section {
@@ -882,9 +961,6 @@
         grid-template-columns: 1fr;
         min-height: auto;
       }
-      .hero-visual {
-        grid-template-columns: 1fr 1fr;
-      }
       .section-head,
       .visit-wrap {
         grid-template-columns: 1fr;
@@ -921,6 +997,13 @@
       }
       nav {
         display: none;
+      }
+      .menu-toggle {
+        position: fixed;
+        top: 12px;
+        left: min(328px, calc(100vw - 62px));
+        right: auto;
+        z-index: 40;
       }
       nav .button {
         display: none;
@@ -970,15 +1053,19 @@
         width: 100%;
       }
       .hero-stats,
-      .hero-visual,
       .project-grid {
         grid-template-columns: 1fr;
       }
-      .hero-visual img,
-      .hero-visual .side {
-        height: auto;
-        max-height: none;
-        margin: 0;
+      .hero-carousel {
+        min-height: 360px;
+        height: 68vh;
+        max-height: 560px;
+      }
+      .carousel-meta {
+        display: block;
+      }
+      .carousel-dots {
+        margin-top: 18px;
       }
       .project {
         min-height: 320px;
@@ -1043,8 +1130,8 @@
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <p class="eyebrow">Established 2001 - Harare, Zimbabwe</p>
-        <h1 id="hero-title">Designed for rest. Styled for luxury.</h1>
-        <p class="lead">Inner Living is a one-stop interiors and exteriors studio for refined homes, lodges and offices, from design consultation and fabric selection to custom furniture, fabrication and installation.</p>
+        <h1 id="hero-title">Inner Living Interiors &ndash; Where Beautiful Living Begins</h1>
+        <p class="lead">Inner Living is an Interiors and Exteriors Studio for refined homes, lodges and offices, from design consultation and fabric selection to custom furniture, fabrication and installation.</p>
         <div class="hero-actions">
           <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
           <a class="button secondary" href="tel:+263783106505">Call +263 78 310 6505</a>
@@ -1055,9 +1142,37 @@
           <div class="stat"><strong>2001</strong><span>Founded by Dave and Tracey Ashwin</span></div>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <img src="assets/hero-bedroom.jpg" alt="">
-        <img class="side" src="assets/staircase-interior.jpg" alt="">
+      <div class="hero-visual" aria-label="Inner Living project image carousel">
+        <div class="hero-carousel">
+          <figure class="carousel-slide active">
+            <img src="assets/wallpaper.jpg" alt="Soft interior nook with wallpaper, curtains and a cushioned bench.">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/entryway.jpg" alt="Modern exterior entry with timber doors, glass panels and black steel canopy.">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/pool-fence.jpg" alt="Custom steel, wood and cable pool fence around a swimming pool.">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/staircase-interior.jpg" alt="Interior curved staircase with timber treads and steel railings.">
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/staircase-exterior.jpg" alt="Exterior steel staircase with balustrades on a brick building.">
+          </figure>
+          <div class="carousel-meta">
+            <div>
+              <span>Crafted interiors and exteriors</span>
+              <strong>Renovation, fabrication and finishing details in motion.</strong>
+            </div>
+            <div class="carousel-dots" aria-label="Carousel navigation">
+              <button class="carousel-dot active" type="button" aria-label="Show wallpaper styling"></button>
+              <button class="carousel-dot" type="button" aria-label="Show entryway project"></button>
+              <button class="carousel-dot" type="button" aria-label="Show pool fencing"></button>
+              <button class="carousel-dot" type="button" aria-label="Show interior staircase"></button>
+              <button class="carousel-dot" type="button" aria-label="Show exterior staircase"></button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1067,7 +1182,7 @@
           <p class="eyebrow">Business & Services</p>
           <h2 id="services-title">Everything interiors, with exterior craft to match.</h2>
         </div>
-        <p>They began as a wrought iron and fabrication company, then expanded into interior design, curtains, upholstery, soft furnishings, custom furniture, wallpaper, blinds and complete fit-outs. The result is a practical, beautiful service that can measure, manufacture and install under one roof.</p>
+        <p>Inner Living Interiors has been delivering exceptional renovations and interior solutions for over 25 years. Specialising in renovations, project management, steel fabrication, soft furnishings, and interior design, we create stylish, functional spaces with quality craftsmanship and expert attention to detail.</p>
       </div>
       <div class="service-grid">
         <article class="service-card">
@@ -1269,6 +1384,44 @@
     window.addEventListener("resize", () => {
       if (window.innerWidth > 980) closeMenu();
     });
+
+    const carousel = document.querySelector(".hero-carousel");
+    const carouselSlides = document.querySelectorAll(".carousel-slide");
+    const carouselDots = document.querySelectorAll(".carousel-dot");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let activeSlide = 0;
+    let carouselTimer;
+
+    const showSlide = (index) => {
+      activeSlide = (index + carouselSlides.length) % carouselSlides.length;
+      carouselSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === activeSlide);
+      });
+      carouselDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === activeSlide);
+      });
+    };
+
+    const startCarousel = () => {
+      if (reduceMotion || !carouselSlides.length) return;
+      carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 4200);
+    };
+
+    const stopCarousel = () => {
+      window.clearInterval(carouselTimer);
+    };
+
+    carouselDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        stopCarousel();
+        showSlide(index);
+        startCarousel();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopCarousel);
+    carousel.addEventListener("mouseleave", startCarousel);
+    startCarousel();
 
     const revealTargets = document.querySelectorAll(
       ".section-head, .service-card, .project, .quote, .review-cta, .visit-panel, .map"
