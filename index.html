@@ -998,6 +998,97 @@
       font-size: 14px;
     }
 
+    .partners {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .partners::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(77, 115, 122, .09), transparent 32%, rgba(214, 167, 102, .1)),
+        radial-gradient(circle at 75% 18%, rgba(77, 115, 122, .12), transparent 32%);
+    }
+
+    .partners .section-head,
+    .partner-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    .partners-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 8.8vw, 118px);
+      line-height: .9;
+      letter-spacing: 0;
+      color: var(--deep);
+      margin: 0;
+    }
+
+    .partner-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .partner-card {
+      min-height: 118px;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(31, 38, 37, .1);
+      background: rgba(255, 253, 248, .8);
+      box-shadow: 0 16px 36px rgba(19, 34, 36, .07);
+      text-decoration: none;
+      color: var(--deep);
+      transition: transform .64s var(--ease-premium), box-shadow .64s var(--ease-premium), border-color .64s var(--ease-premium), background .64s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(77, 115, 122, .34);
+      background: var(--paper);
+      box-shadow: 0 24px 54px rgba(19, 34, 36, .13);
+    }
+
+    .partner-card.dark {
+      background: var(--deep);
+      border-color: rgba(255, 253, 248, .12);
+    }
+
+    .partner-card.dark:hover {
+      background: #132120;
+      border-color: rgba(255, 253, 248, .28);
+    }
+
+    .partner-card img {
+      max-width: 100%;
+      max-height: 70px;
+      object-fit: contain;
+      filter: grayscale(.08);
+      transition: transform .64s var(--ease-premium), filter .64s ease;
+    }
+
+    .partner-card:hover img {
+      transform: scale(1.035);
+      filter: grayscale(0);
+    }
+
+    .partner-wordmark {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
     .visit {
       background: #efe6d7;
     }
@@ -1090,6 +1181,7 @@
 
     .motion-reveal.visible.service-card:hover,
     .motion-reveal.visible.team-card:hover,
+    .motion-reveal.visible.partner-card:hover,
     .motion-reveal.visible.project:hover {
       transform: translateY(-8px);
     }
@@ -1154,6 +1246,9 @@
       .tip-row,
       .testimonial-grid {
         grid-template-columns: 1fr;
+      }
+      .partner-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
       .project-grid {
         grid-template-columns: 1fr 1fr;
@@ -1243,6 +1338,16 @@
       .team-card {
         flex-basis: min(78vw, 310px);
       }
+      .partner-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .partner-card {
+        min-height: 104px;
+        padding: 18px;
+      }
+      .partner-wordmark {
+        font-size: 24px;
+      }
       .hero-stats,
       .project-grid {
         grid-template-columns: 1fr;
@@ -1297,6 +1402,7 @@
     </a>
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
+      <a href="#partners">Partners</a>
       <a href="#work">Work</a>
       <a href="#team">Team</a>
       <a href="#tips">Tips</a>
@@ -1310,6 +1416,7 @@
     </button>
     <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
       <a href="#services">Services</a>
+      <a href="#partners">Partners</a>
       <a href="#work">Work</a>
       <a href="#team">Team</a>
       <a href="#tips">Design tips</a>
@@ -1412,6 +1519,39 @@
           <span>Share your experience and help future clients choose with confidence.</span>
         </div>
         <a class="button" href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a Google review</a>
+      </div>
+    </section>
+
+    <section id="partners" class="partners" aria-labelledby="partners-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Trusted Suppliers</p>
+          <h2 id="partners-title" class="partners-title">In Cooperation With</h2>
+        </div>
+        <p>Inner Living works with respected fabric, wallpaper, linen and rug houses to source finishes that feel refined, durable and right for each space.</p>
+      </div>
+      <div class="partner-grid" aria-label="Inner Living cooperation partners">
+        <a class="partner-card" href="https://www.hertex.co.za/" target="_blank" rel="noreferrer" aria-label="Visit Hertex">
+          <span class="partner-wordmark">Hertex</span>
+        </a>
+        <a class="partner-card" href="https://piecegoods.co.za/" target="_blank" rel="noreferrer" aria-label="Visit Piece Goods">
+          <img src="assets/partner-piecegoods.jpg" alt="Piece Goods Company logo.">
+        </a>
+        <a class="partner-card dark" href="https://linenhouse.co.za/" target="_blank" rel="noreferrer" aria-label="Visit Linen House">
+          <img src="assets/partner-linenhouse.png" alt="Linen House logo.">
+        </a>
+        <a class="partner-card" href="https://www.stuartgraham.co.za/en" target="_blank" rel="noreferrer" aria-label="Visit Stuart Graham">
+          <img src="assets/partner-stuartgraham.jpg" alt="Stuart Graham logo.">
+        </a>
+        <a class="partner-card" href="https://www.homefabrics.co.za/en" target="_blank" rel="noreferrer" aria-label="Visit Home Fabrics">
+          <img src="assets/partner-homefabrics.png" alt="Home Fabrics logo.">
+        </a>
+        <a class="partner-card" href="https://www.silkhouse.co.za/" target="_blank" rel="noreferrer" aria-label="Visit Silk House">
+          <img src="assets/partner-silkhouse.png" alt="Silk House logo.">
+        </a>
+        <a class="partner-card" href="https://www.fotakisrugs.co.za/" target="_blank" rel="noreferrer" aria-label="Visit Fotakis Rugs">
+          <img src="assets/partner-fotakis.svg" alt="Fotakis Rugs and Floors logo.">
+        </a>
       </div>
     </section>
 
@@ -1703,7 +1843,7 @@
     startTeamAuto();
 
     const revealTargets = document.querySelectorAll(
-      ".section-head, .service-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
+      ".section-head, .service-card, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
