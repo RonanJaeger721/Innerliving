@@ -585,6 +585,85 @@
       border-top: 1px solid rgba(31, 38, 37, .08);
     }
 
+    .team {
+      background: #f0eee6;
+      overflow: hidden;
+    }
+
+    .team-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .team-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin: -14px 0 18px;
+    }
+
+    .team-control {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(31, 38, 37, .16);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--deep);
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      box-shadow: 0 12px 28px rgba(19, 34, 36, .08);
+      transition: transform .42s var(--ease-premium), border-color .42s var(--ease-premium), box-shadow .42s var(--ease-premium), background .42s ease;
+    }
+
+    .team-control:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 115, 122, .34);
+      background: var(--paper);
+      box-shadow: 0 18px 36px rgba(19, 34, 36, .12);
+    }
+
+    .team-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 4px 0 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(77, 115, 122, .44) transparent;
+    }
+
+    .team-card {
+      flex: 0 0 clamp(250px, 28vw, 330px);
+      aspect-ratio: 724 / 1280;
+      border-radius: var(--radius);
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--teal);
+      box-shadow: 0 18px 44px rgba(19, 34, 36, .12);
+      transition: transform .62s var(--ease-premium), box-shadow .62s var(--ease-premium);
+      will-change: transform;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(19, 34, 36, .2);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .82s var(--ease-premium), filter .62s ease;
+    }
+
+    .team-card:hover img {
+      transform: scale(1.035);
+      filter: saturate(1.04) contrast(1.02);
+    }
+
     .portfolio {
       background: #e7ece8;
     }
@@ -947,6 +1026,7 @@
     }
 
     .motion-reveal.visible.service-card:hover,
+    .motion-reveal.visible.team-card:hover,
     .motion-reveal.visible.project:hover {
       transform: translateY(-8px);
     }
@@ -1089,6 +1169,13 @@
       .review-cta .button {
         width: 100%;
       }
+      .team-toolbar {
+        justify-content: flex-start;
+        margin: 0 0 16px;
+      }
+      .team-card {
+        flex-basis: min(78vw, 310px);
+      }
       .hero-stats,
       .project-grid {
         grid-template-columns: 1fr;
@@ -1144,6 +1231,7 @@
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
       <a href="#work">Work</a>
+      <a href="#team">Team</a>
       <a href="#tips">Tips</a>
       <a href="#visit">Visit</a>
       <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
@@ -1156,6 +1244,7 @@
     <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
       <a href="#services">Services</a>
       <a href="#work">Work</a>
+      <a href="#team">Team</a>
       <a href="#tips">Design tips</a>
       <a href="#visit">Visit us</a>
       <a href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a review</a>
@@ -1256,6 +1345,37 @@
           <span>Share your experience and help future clients choose with confidence.</span>
         </div>
         <a class="button" href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a Google review</a>
+      </div>
+    </section>
+
+    <section id="team" class="team" aria-labelledby="team-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Meet the Team</p>
+          <h2 id="team-title">The people behind the craft.</h2>
+        </div>
+        <p>From design and project management to fabrication, sewing, fitment and showroom care, meet the Inner Living team who bring each space together.</p>
+      </div>
+      <div class="team-shell">
+        <div class="team-toolbar" aria-label="Team carousel controls">
+          <button class="team-control" type="button" data-team-scroll="-1" aria-label="Previous team members">&lt;</button>
+          <button class="team-control" type="button" data-team-scroll="1" aria-label="Next team members">&gt;</button>
+        </div>
+        <div class="team-track" aria-label="Inner Living team members">
+          <article class="team-card"><img src="assets/team-katherine.jpg" alt="Meet Katherine, part of the sewing team and master of Roman blinds."></article>
+          <article class="team-card"><img src="assets/team-gladys.jpg" alt="Meet Gladys, speedy curtain fabrication and wave pleat specialist."></article>
+          <article class="team-card"><img src="assets/team-fanuel.jpg" alt="Meet Fanuel, sewing department specialist for loose, seat and base cushions."></article>
+          <article class="team-card"><img src="assets/team-margaret.jpg" alt="Meet Margaret, sewing room finishings and cushion specialist with great attention to detail."></article>
+          <article class="team-card"><img src="assets/team-tineyi.jpg" alt="Meet Tineyi, sewing room curtain and pinch pleat specialist."></article>
+          <article class="team-card"><img src="assets/team-sheila.jpg" alt="Meet Sheila, head of the sewing room."></article>
+          <article class="team-card"><img src="assets/team-ellen.jpg" alt="Meet Ellen, housekeeping and shop presentation."></article>
+          <article class="team-card"><img src="assets/team-brian.jpg" alt="Meet Brian, general manager."></article>
+          <article class="team-card"><img src="assets/team-joyce.jpg" alt="Meet Joyce, fitment and showroom support."></article>
+          <article class="team-card"><img src="assets/team-gamu.jpg" alt="Meet Gamu, interiors assistant."></article>
+          <article class="team-card"><img src="assets/team-marisa.jpg" alt="Meet Marisa, project management assistant."></article>
+          <article class="team-card"><img src="assets/team-dave.jpg" alt="Meet Dave, part owner."></article>
+          <article class="team-card"><img src="assets/team-tracey.jpg" alt="Meet Tracey, part owner."></article>
+        </div>
       </div>
     </section>
 
@@ -1467,8 +1587,20 @@
     carousel.addEventListener("mouseleave", startCarousel);
     startCarousel();
 
+    const teamTrack = document.querySelector(".team-track");
+    document.querySelectorAll("[data-team-scroll]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!teamTrack) return;
+        const direction = Number(button.dataset.teamScroll);
+        teamTrack.scrollBy({
+          left: direction * teamTrack.clientWidth * 0.82,
+          behavior: "smooth"
+        });
+      });
+    });
+
     const revealTargets = document.querySelectorAll(
-      ".section-head, .service-card, .project, .quote, .review-cta, .visit-panel, .map"
+      ".section-head, .service-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
