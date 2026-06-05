@@ -692,20 +692,20 @@
       background: var(--teal);
       box-shadow: 0 18px 44px rgba(19, 34, 36, .12);
       transform-origin: center bottom;
-      transition: flex-basis .72s var(--ease-premium), transform .72s var(--ease-premium), box-shadow .72s var(--ease-premium), filter .72s ease, opacity .62s ease;
+      transition: flex-basis .5s var(--ease-premium), transform .5s var(--ease-premium), box-shadow .5s var(--ease-premium), filter .5s ease, opacity .5s ease;
       will-change: transform;
     }
 
     .team-track:has(.team-card:hover) .team-card {
-      flex-basis: clamp(225px, 24vw, 285px);
-      opacity: .78;
-      filter: saturate(.88);
+      flex-basis: clamp(245px, 27vw, 315px);
+      opacity: .92;
+      filter: saturate(.96);
     }
 
     .team-track:has(.team-card:hover) .team-card:hover {
-      flex-basis: clamp(310px, 34vw, 400px);
+      flex-basis: clamp(270px, 30vw, 350px);
       opacity: 1;
-      filter: saturate(1.06);
+      filter: saturate(1.02);
     }
 
     .team-card::before,
@@ -731,14 +731,13 @@
     }
 
     .team-card:hover {
-      transform: translateY(-10px) scale(1.015);
-      box-shadow: 0 32px 78px rgba(19, 34, 36, .22);
-      filter: saturate(1.04);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 56px rgba(19, 34, 36, .17);
+      filter: saturate(1.02);
     }
 
     .team-card:hover::after {
-      opacity: 1;
-      transform: translateX(240%) skewX(-13deg);
+      opacity: 0;
     }
 
     .team-card img {
@@ -749,8 +748,8 @@
     }
 
     .team-card:hover img {
-      transform: scale(1.045);
-      filter: saturate(1.04) contrast(1.02);
+      transform: scale(1.018);
+      filter: saturate(1.02) contrast(1.01);
     }
 
     .portfolio {
@@ -1207,16 +1206,16 @@
 
     .team-card.motion-reveal {
       opacity: 0;
-      transform: translateY(34px) scale(.94) rotate(-1.2deg);
-      filter: blur(9px) saturate(.88);
+      transform: translateY(18px);
+      filter: blur(3px) saturate(.94);
     }
 
     .team-card.motion-reveal:nth-child(even) {
-      transform: translateY(22px) scale(.96) rotate(1.2deg);
+      transform: translateY(18px);
     }
 
     .team-card.motion-reveal:nth-child(3n) {
-      transform: translateY(42px) scale(.93) rotate(.6deg);
+      transform: translateY(18px);
     }
 
     .team-card.motion-reveal.visible {
@@ -1233,7 +1232,7 @@
     }
 
     .motion-reveal.visible.team-card:hover {
-      transform: translateY(-10px) scale(1.015);
+      transform: translateY(-4px);
     }
 
     .motion-reveal.visible.quote:hover {
@@ -1939,8 +1938,6 @@
     startCarousel();
 
     const teamTrack = document.querySelector(".team-track");
-    let teamTimer;
-
     const getTeamStep = () => {
       const firstCard = teamTrack?.querySelector(".team-card");
       if (!teamTrack || !firstCard) return 0;
@@ -1970,28 +1967,11 @@
       teamTrack.scrollBy({ left: direction * step, behavior: "smooth" });
     };
 
-    const stopTeamAuto = () => {
-      window.clearInterval(teamTimer);
-    };
-
-    const startTeamAuto = () => {
-      if (reduceMotion || !teamTrack || teamTrack.scrollWidth <= teamTrack.clientWidth) return;
-      stopTeamAuto();
-      teamTimer = window.setInterval(() => scrollTeam(1), 3200);
-    };
-
     document.querySelectorAll("[data-team-scroll]").forEach((button) => {
       button.addEventListener("click", () => {
-        stopTeamAuto();
         scrollTeam(Number(button.dataset.teamScroll));
-        startTeamAuto();
       });
     });
-    teamTrack?.addEventListener("mouseenter", stopTeamAuto);
-    teamTrack?.addEventListener("mouseleave", startTeamAuto);
-    teamTrack?.addEventListener("focusin", stopTeamAuto);
-    teamTrack?.addEventListener("focusout", startTeamAuto);
-    startTeamAuto();
 
     const revealTargets = document.querySelectorAll(
       ".section-head, .service-card, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
