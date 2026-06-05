@@ -692,8 +692,20 @@
       background: var(--teal);
       box-shadow: 0 18px 44px rgba(19, 34, 36, .12);
       transform-origin: center bottom;
-      transition: transform .72s var(--ease-premium), box-shadow .72s var(--ease-premium), filter .72s ease;
+      transition: flex-basis .72s var(--ease-premium), transform .72s var(--ease-premium), box-shadow .72s var(--ease-premium), filter .72s ease, opacity .62s ease;
       will-change: transform;
+    }
+
+    .team-track:has(.team-card:hover) .team-card {
+      flex-basis: clamp(225px, 24vw, 285px);
+      opacity: .78;
+      filter: saturate(.88);
+    }
+
+    .team-track:has(.team-card:hover) .team-card:hover {
+      flex-basis: clamp(310px, 34vw, 400px);
+      opacity: 1;
+      filter: saturate(1.06);
     }
 
     .team-card::before,
@@ -1436,6 +1448,12 @@
       }
       .team-card {
         flex-basis: min(78vw, 310px);
+      }
+      .team-track:has(.team-card:hover) .team-card,
+      .team-track:has(.team-card:hover) .team-card:hover {
+        flex-basis: min(78vw, 310px);
+        opacity: 1;
+        filter: none;
       }
       .partner-grid {
         grid-template-columns: 1fr 1fr;
