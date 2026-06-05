@@ -36,6 +36,25 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
+    :focus-visible {
+      outline: 3px solid rgba(214, 167, 102, .72);
+      outline-offset: 4px;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 60;
+      width: 100%;
+      height: 3px;
+      pointer-events: none;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: linear-gradient(90deg, var(--teal), var(--clay));
+      box-shadow: 0 1px 8px rgba(77, 115, 122, .22);
+      transition: transform .12s linear;
+    }
+
     .site-header {
       position: fixed;
       inset: 0 0 auto;
@@ -48,6 +67,15 @@
       background: rgba(247, 244, 237, .86);
       border-bottom: 1px solid rgba(31, 38, 37, .08);
       backdrop-filter: blur(16px);
+      transition: padding .52s var(--ease-premium), background .42s ease, box-shadow .52s var(--ease-premium), border-color .42s ease;
+    }
+
+    .site-header.scrolled {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background: rgba(247, 244, 237, .94);
+      border-color: rgba(31, 38, 37, .12);
+      box-shadow: 0 12px 36px rgba(19, 34, 36, .09);
     }
 
     .brand {
@@ -66,6 +94,12 @@
       background: var(--teal);
       box-shadow: 0 8px 22px rgba(19, 34, 36, .12);
       flex: 0 0 auto;
+      transition: transform .52s var(--ease-premium), box-shadow .52s var(--ease-premium);
+    }
+
+    .brand:hover .brand-mark {
+      transform: rotate(-3deg) scale(1.045);
+      box-shadow: 0 14px 32px rgba(19, 34, 36, .18);
     }
 
     .brand-mark img {
@@ -1219,14 +1253,79 @@
     }
 
     footer {
-      padding: 34px clamp(18px, 5vw, 76px);
+      padding: 52px clamp(18px, 5vw, 76px) 32px;
       background: var(--deep);
       color: rgba(255, 253, 248, .68);
+      font-size: 14px;
+    }
+
+    .footer-main {
+      max-width: 1180px;
+      margin: 0 auto 34px;
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) auto;
+      align-items: end;
+      gap: 28px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--white);
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .footer-brand span {
+      display: block;
+      max-width: 540px;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    .social-links {
       display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 253, 248, .2);
+      border-radius: 999px;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 760;
+      transition: transform .42s var(--ease-premium), background .42s ease, border-color .42s ease, color .42s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--deep);
+    }
+
+    .footer-bottom {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 253, 248, .12);
+      display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
-      font-size: 14px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
     }
 
     @media (max-width: 980px) {
@@ -1367,9 +1466,16 @@
         min-height: 320px;
       }
       footer {
+        padding-top: 42px;
+      }
+      .footer-main {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .footer-bottom {
         display: block;
       }
-      footer span {
+      .footer-bottom span {
         display: block;
         margin-top: 8px;
       }
@@ -1392,6 +1498,7 @@
   </style>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Inner Living home">
       <span class="brand-mark"><img src="assets/anniversary-logo.jpg" alt=""></span>
@@ -1421,6 +1528,7 @@
       <a href="#team">Team</a>
       <a href="#tips">Design tips</a>
       <a href="#visit">Visit us</a>
+      <a href="https://www.instagram.com/inner.livin?igsh=MWpqNHJ2YTlpOHNvNQ==" target="_blank" rel="noreferrer">Instagram</a>
       <a href="https://share.google/DreB3K7emjInaabzL" target="_blank" rel="noreferrer">Leave a review</a>
       <a class="accent" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
     </div>
@@ -1701,14 +1809,39 @@
   </main>
 
   <footer>
-    <strong>inner living interiors & exteriors</strong>
-    <span>Borrowdale Racecourse, Harare - +263 78 310 6505 - interiors@innerliving.co.zw</span>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <strong>Inner Living Interiors & Exteriors</strong>
+        <span>Beautiful, functional spaces shaped through thoughtful design, skilled fabrication and over 25 years of craftsmanship.</span>
+      </div>
+      <div class="social-links" aria-label="Inner Living social media and contact links">
+        <a class="social-link" href="https://www.instagram.com/inner.livin?igsh=MWpqNHJ2YTlpOHNvNQ==" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="social-link" href="https://www.facebook.com/search/top?q=Inner%20Living" target="_blank" rel="noreferrer">Facebook</a>
+        <a class="social-link" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Borrowdale Racecourse, Harare</span>
+      <span>+263 78 310 6505 &middot; interiors@innerliving.co.zw</span>
+    </div>
   </footer>
 
   <script>
     const header = document.querySelector(".site-header");
+    const scrollProgress = document.querySelector(".scroll-progress");
     const menuToggle = document.querySelector(".menu-toggle");
     const mobileMenu = document.querySelector(".mobile-menu");
+
+    const updateScrollDetails = () => {
+      const scrollTop = window.scrollY;
+      const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollRange > 0 ? Math.min(scrollTop / scrollRange, 1) : 0;
+      header.classList.toggle("scrolled", scrollTop > 24);
+      scrollProgress.style.transform = `scaleX(${progress})`;
+    };
+
+    window.addEventListener("scroll", updateScrollDetails, { passive: true });
+    updateScrollDetails();
 
     const closeMenu = () => {
       header.classList.remove("menu-open");
@@ -1855,7 +1988,8 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-        } else {
+          if (!entry.target.classList.contains("tip")) observer.unobserve(entry.target);
+        } else if (entry.target.classList.contains("tip")) {
           entry.target.classList.remove("visible");
         }
       });
