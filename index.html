@@ -653,6 +653,353 @@
       background: var(--white);
     }
 
+    .catalogue-feature {
+      background: linear-gradient(180deg, #fbfaf5, #f3eee4);
+      border-top: 1px solid rgba(31, 38, 37, .06);
+      border-bottom: 1px solid rgba(31, 38, 37, .06);
+      scroll-margin-top: 92px;
+    }
+
+    .catalogue-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .catalogue-intro {
+      display: grid;
+      grid-template-columns: minmax(220px, .74fr) minmax(260px, 1fr);
+      gap: clamp(20px, 4vw, 70px);
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .catalogue-copy {
+      max-width: 540px;
+    }
+
+    .catalogue-copy p {
+      color: rgba(31, 38, 37, .72);
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    .catalogue-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .catalogue-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border: 1px solid rgba(31, 38, 37, .1);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .84);
+      color: rgba(31, 38, 37, .72);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .02em;
+      box-shadow: 0 10px 24px rgba(19, 34, 36, .05);
+    }
+
+    .catalogue-accordion {
+      border: 1px solid rgba(31, 38, 37, .1);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .94);
+      box-shadow: 0 24px 60px rgba(19, 34, 36, .1);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .catalogue-toggle {
+      width: 100%;
+      border: 0;
+      padding: 18px;
+      background: transparent;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      transition: background .42s ease, transform .42s var(--ease-premium);
+    }
+
+    .catalogue-toggle:hover {
+      background: rgba(77, 115, 122, .05);
+    }
+
+    .catalogue-toggle-symbol,
+    .catalogue-chevron {
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(19, 34, 36, .08);
+    }
+
+    .catalogue-toggle-symbol {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(31, 38, 37, .12);
+      border-radius: 50%;
+      color: var(--teal);
+      flex: 0 0 auto;
+    }
+
+    .catalogue-toggle-lines,
+    .catalogue-toggle-lines::before,
+    .catalogue-toggle-lines::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      content: "";
+      transition: transform .42s var(--ease-premium), opacity .28s ease;
+    }
+
+    .catalogue-toggle-lines {
+      position: relative;
+    }
+
+    .catalogue-toggle-lines::before {
+      position: absolute;
+      top: -6px;
+      left: 0;
+    }
+
+    .catalogue-toggle-lines::after {
+      position: absolute;
+      top: 6px;
+      left: 0;
+    }
+
+    .catalogue-feature.open .catalogue-toggle-lines::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .catalogue-feature.open .catalogue-toggle-lines {
+      background: transparent;
+    }
+
+    .catalogue-feature.open .catalogue-toggle-lines::after {
+      transform: translateY(-6px) rotate(-45deg);
+      opacity: 1;
+    }
+
+    .catalogue-toggle-text > span {
+      display: block;
+      color: rgba(31, 38, 37, .6);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .catalogue-toggle-text strong {
+      display: block;
+      color: var(--deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: .98;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .catalogue-toggle-text p {
+      margin: 8px 0 0;
+      color: rgba(31, 38, 37, .68);
+      font-size: 14px;
+    }
+
+    .catalogue-toggle-trailing {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .catalogue-thumb {
+      width: 86px;
+      aspect-ratio: 1132 / 1600;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 38, 37, .12);
+      box-shadow: 0 16px 32px rgba(19, 34, 36, .12);
+      background: var(--white);
+      flex: 0 0 auto;
+    }
+
+    .catalogue-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .72s var(--ease-premium), filter .62s ease;
+    }
+
+    .catalogue-feature.open .catalogue-thumb img,
+    .catalogue-toggle:hover .catalogue-thumb img {
+      transform: scale(1.03);
+      filter: saturate(1.02);
+    }
+
+    .catalogue-chevron {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(31, 38, 37, .12);
+      border-radius: 50%;
+      color: var(--deep);
+      transition: transform .42s var(--ease-premium), border-color .42s var(--ease-premium), background .42s ease;
+      flex: 0 0 auto;
+    }
+
+    .catalogue-chevron::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+    }
+
+    .catalogue-feature.open .catalogue-chevron {
+      transform: rotate(180deg);
+      border-color: rgba(77, 115, 122, .28);
+      background: rgba(77, 115, 122, .08);
+    }
+
+    .catalogue-panel {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 18px;
+      transition:
+        max-height .92s var(--ease-premium),
+        opacity .42s ease,
+        padding-bottom .42s ease,
+        border-top-color .42s ease;
+      border-top: 1px solid transparent;
+    }
+
+    .catalogue-feature.open .catalogue-panel {
+      max-height: 9200px;
+      opacity: 1;
+      padding-bottom: 18px;
+      border-top-color: rgba(31, 38, 37, .08);
+    }
+
+    .catalogue-pages {
+      padding-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .catalogue-page {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(31, 38, 37, .08);
+      background: #f8f6ef;
+      box-shadow: 0 16px 38px rgba(19, 34, 36, .08);
+      opacity: 0;
+      transform: translateY(22px) scale(.986);
+      transition:
+        opacity .72s ease,
+        transform .72s var(--ease-premium),
+        box-shadow .62s var(--ease-premium),
+        border-color .62s var(--ease-premium);
+    }
+
+    .catalogue-feature.open .catalogue-page {
+      opacity: 1;
+      transform: none;
+    }
+
+    .catalogue-page:nth-child(2) { transition-delay: 60ms; }
+    .catalogue-page:nth-child(3) { transition-delay: 120ms; }
+    .catalogue-page:nth-child(4) { transition-delay: 180ms; }
+    .catalogue-page:nth-child(5) { transition-delay: 240ms; }
+    .catalogue-page:nth-child(6) { transition-delay: 300ms; }
+    .catalogue-page:nth-child(7) { transition-delay: 360ms; }
+    .catalogue-page:nth-child(8) { transition-delay: 420ms; }
+
+    .catalogue-page:hover {
+      transform: translateY(-6px);
+      border-color: rgba(77, 115, 122, .26);
+      box-shadow: 0 24px 56px rgba(19, 34, 36, .14);
+    }
+
+    .catalogue-page img {
+      width: 100%;
+      display: block;
+    }
+
+    .catalogue-page-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(19, 34, 36, .74);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      box-shadow: 0 12px 24px rgba(19, 34, 36, .16);
+      backdrop-filter: blur(10px);
+    }
+
+    .catalogue-download {
+      margin-top: 22px;
+      padding: 22px;
+      border: 1px solid rgba(77, 115, 122, .18);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(77, 115, 122, .08), rgba(255, 253, 248, .96));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity .72s ease .18s,
+        transform .72s var(--ease-premium) .18s,
+        box-shadow .62s var(--ease-premium),
+        border-color .62s var(--ease-premium);
+    }
+
+    .catalogue-feature.open .catalogue-download {
+      opacity: 1;
+      transform: none;
+    }
+
+    .catalogue-download:hover {
+      border-color: rgba(77, 115, 122, .34);
+      box-shadow: 0 20px 44px rgba(19, 34, 36, .1);
+    }
+
+    .catalogue-download strong {
+      display: block;
+      color: var(--deep);
+      font-size: 20px;
+      line-height: 1.15;
+      margin-bottom: 5px;
+    }
+
+    .catalogue-download span {
+      color: rgba(31, 38, 37, .66);
+      font-size: 14px;
+    }
+
     .service-grid {
       max-width: 1180px;
       margin: 0 auto;
@@ -1451,12 +1798,16 @@
         min-height: auto;
       }
       .section-head,
+      .catalogue-intro,
       .visit-wrap {
         grid-template-columns: 1fr;
       }
       .service-grid,
       .tip-row,
       .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .catalogue-pages {
         grid-template-columns: 1fr;
       }
       .partner-grid {
@@ -1539,6 +1890,25 @@
       .review-cta {
         align-items: stretch;
         flex-direction: column;
+      }
+      .catalogue-toggle {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+      }
+      .catalogue-toggle-trailing {
+        grid-column: 1 / -1;
+        padding-left: 70px;
+        justify-content: space-between;
+      }
+      .catalogue-thumb {
+        width: 74px;
+      }
+      .catalogue-download {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .catalogue-download .button {
+        width: 100%;
       }
       .review-cta .button {
         width: 100%;
@@ -1628,6 +1998,7 @@
     </a>
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
+      <a href="#catalogue" data-open-catalogue="true">Catalogue</a>
       <a href="#partners">Partners</a>
       <a href="#work">Work</a>
       <a href="#team">Team</a>
@@ -1642,6 +2013,7 @@
     </button>
     <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
       <a href="#services">Services</a>
+      <a href="#catalogue" data-open-catalogue="true">Catalogue</a>
       <a href="#partners">Partners</a>
       <a href="#work">Work</a>
       <a href="#team">Team</a>
@@ -1662,6 +2034,7 @@
         <div class="hero-actions">
           <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
           <a class="button secondary" href="tel:+263783106505">Call +263 78 310 6505</a>
+          <a class="button secondary" href="#catalogue" data-open-catalogue="true">View catalogue</a>
         </div>
         <div class="hero-stats" aria-label="Inner Living highlights">
           <div class="stat"><strong>25</strong><span>Years of craft and design</span></div>
@@ -1700,6 +2073,57 @@
             </div>
           </div>
           <div class="carousel-progress" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogue" class="catalogue-feature" aria-labelledby="catalogue-title">
+      <div class="catalogue-shell">
+        <div class="catalogue-intro motion-reveal">
+          <div>
+            <p class="eyebrow">Product Catalogue</p>
+            <h2 id="catalogue-title">View the catalogue right here on the site.</h2>
+          </div>
+          <div class="catalogue-copy">
+            <p>Open the catalogue below to drop it down on the page, scroll through the product pages, and then download the PDF once you are ready to keep a copy.</p>
+            <div class="catalogue-meta" aria-label="Catalogue details">
+              <span class="catalogue-pill">8-page PDF</span>
+              <span class="catalogue-pill">Headboards, chairs and sofas</span>
+            </div>
+          </div>
+        </div>
+        <div class="catalogue-accordion motion-reveal">
+          <button class="catalogue-toggle" type="button" aria-expanded="false" aria-controls="catalogue-panel">
+            <span class="catalogue-toggle-symbol" aria-hidden="true"><span class="catalogue-toggle-lines"></span></span>
+            <span class="catalogue-toggle-text">
+              <span>View catalogue</span>
+              <strong>Drop down and browse the full collection.</strong>
+              <p>Open the catalogue, scroll through every page, then download the full PDF at the bottom.</p>
+            </span>
+            <span class="catalogue-toggle-trailing" aria-hidden="true">
+              <span class="catalogue-thumb"><img src="assets/catalogue-cover.jpg" alt=""></span>
+              <span class="catalogue-chevron"></span>
+            </span>
+          </button>
+          <div class="catalogue-panel" id="catalogue-panel">
+            <div class="catalogue-pages" aria-label="Inner Living product catalogue preview pages">
+              <figure class="catalogue-page"><img src="assets/catalogue-page-1.jpg" alt="Page 1 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 1</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-2.jpg" alt="Page 2 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 2</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-3.jpg" alt="Page 3 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 3</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-4.jpg" alt="Page 4 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 4</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-5.jpg" alt="Page 5 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 5</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-6.jpg" alt="Page 6 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 6</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-7.jpg" alt="Page 7 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 7</figcaption></figure>
+              <figure class="catalogue-page"><img src="assets/catalogue-page-8.jpg" alt="Page 8 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 8</figcaption></figure>
+            </div>
+            <div class="catalogue-download">
+              <div>
+                <strong>Download the full catalogue</strong>
+                <span>Save the PDF for offline sharing, client approvals or later reference.</span>
+              </div>
+              <a class="button" href="assets/inner-living-product-catalogue.pdf" download="Inner-Living-Product-Catalogue.pdf">Download catalogue</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1950,6 +2374,9 @@
     const scrollProgress = document.querySelector(".scroll-progress");
     const menuToggle = document.querySelector(".menu-toggle");
     const mobileMenu = document.querySelector(".mobile-menu");
+    const catalogueSection = document.querySelector(".catalogue-feature");
+    const catalogueToggle = document.querySelector(".catalogue-toggle");
+    const catalogueTriggers = document.querySelectorAll("[data-open-catalogue]");
 
     const updateScrollDetails = () => {
       const scrollTop = window.scrollY;
@@ -1985,6 +2412,34 @@
     window.addEventListener("resize", () => {
       if (window.innerWidth > 980) closeMenu();
     });
+
+    const setCatalogueOpen = (open) => {
+      if (!catalogueSection || !catalogueToggle) return;
+      catalogueSection.classList.toggle("open", open);
+      catalogueToggle.setAttribute("aria-expanded", String(open));
+    };
+
+    catalogueToggle?.addEventListener("click", () => {
+      const isOpen = catalogueSection.classList.contains("open");
+      setCatalogueOpen(!isOpen);
+    });
+
+    catalogueTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        const targetSelector = trigger.getAttribute("href");
+        if (!targetSelector || !targetSelector.startsWith("#")) return;
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+        event.preventDefault();
+        closeMenu();
+        setCatalogueOpen(true);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    if (window.location.hash === "#catalogue") {
+      setCatalogueOpen(true);
+    }
 
     const carousel = document.querySelector(".hero-carousel");
     const carouselSlides = document.querySelectorAll(".carousel-slide");
@@ -2076,7 +2531,7 @@
     });
 
     const revealTargets = document.querySelectorAll(
-      ".section-head, .service-card, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
+      ".section-head, .catalogue-intro, .catalogue-accordion, .service-card, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
