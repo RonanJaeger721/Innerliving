@@ -892,15 +892,98 @@
       border-top-color: rgba(31, 38, 37, .08);
     }
 
-    .catalogue-pages {
+    .catalogue-browser-head {
       padding-top: 18px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(220px, .85fr) minmax(340px, 1.15fr);
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .catalogue-browser-head p {
+      margin: 0 0 8px;
+      color: rgba(31, 38, 37, .58);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .catalogue-browser-head h3 {
+      margin: 0;
+      color: var(--deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: .98;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .catalogue-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .catalogue-filter {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid rgba(31, 38, 37, .12);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .88);
+      color: rgba(31, 38, 37, .72);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .02em;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(19, 34, 36, .05);
+      transition:
+        transform .42s var(--ease-premium),
+        background .42s ease,
+        color .42s ease,
+        border-color .42s ease,
+        box-shadow .42s var(--ease-premium);
+    }
+
+    .catalogue-filter:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 115, 122, .28);
+      background: var(--white);
+      box-shadow: 0 16px 34px rgba(19, 34, 36, .08);
+    }
+
+    .catalogue-filter.active {
+      background: var(--deep);
+      border-color: var(--deep);
+      color: var(--white);
+      box-shadow: 0 18px 36px rgba(19, 34, 36, .14);
+    }
+
+    .catalogue-results-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 18px;
+      color: rgba(31, 38, 37, .62);
+      font-size: 14px;
+    }
+
+    .catalogue-results-meta strong {
+      color: var(--deep);
+    }
+
+    .catalogue-pages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
     .catalogue-page {
-      position: relative;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       border-radius: var(--radius);
       border: 1px solid rgba(31, 38, 37, .08);
@@ -912,7 +995,8 @@
         opacity .72s ease,
         transform .72s var(--ease-premium),
         box-shadow .62s var(--ease-premium),
-        border-color .62s var(--ease-premium);
+        border-color .62s var(--ease-premium),
+        filter .42s ease;
     }
 
     .catalogue-feature.open .catalogue-page {
@@ -920,13 +1004,9 @@
       transform: none;
     }
 
-    .catalogue-page:nth-child(2) { transition-delay: 60ms; }
-    .catalogue-page:nth-child(3) { transition-delay: 120ms; }
-    .catalogue-page:nth-child(4) { transition-delay: 180ms; }
-    .catalogue-page:nth-child(5) { transition-delay: 240ms; }
-    .catalogue-page:nth-child(6) { transition-delay: 300ms; }
-    .catalogue-page:nth-child(7) { transition-delay: 360ms; }
-    .catalogue-page:nth-child(8) { transition-delay: 420ms; }
+    .catalogue-page[hidden] {
+      display: none !important;
+    }
 
     .catalogue-page:hover {
       transform: translateY(-6px);
@@ -934,40 +1014,95 @@
       box-shadow: 0 24px 56px rgba(19, 34, 36, .14);
     }
 
+    .catalogue-page-media {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--white);
+      border-bottom: 1px solid rgba(31, 38, 37, .08);
+    }
+
     .catalogue-page img {
       width: 100%;
-      display: block;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .82s var(--ease-premium), filter .62s ease;
     }
 
-    .catalogue-page-label {
-      position: absolute;
-      top: 16px;
-      left: 16px;
+    .catalogue-page:hover img {
+      transform: scale(1.03);
+      filter: saturate(1.03);
+    }
+
+    .catalogue-page-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      flex: 1;
+    }
+
+    .catalogue-page-tag {
       display: inline-flex;
       align-items: center;
-      min-height: 32px;
-      padding: 0 12px;
+      width: fit-content;
+      min-height: 30px;
+      padding: 0 10px;
       border-radius: 999px;
-      background: rgba(19, 34, 36, .74);
-      color: var(--white);
-      font-size: 12px;
+      background: rgba(77, 115, 122, .1);
+      color: var(--teal);
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.3px;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      box-shadow: 0 12px 24px rgba(19, 34, 36, .16);
-      backdrop-filter: blur(10px);
     }
 
-    .catalogue-download {
-      margin-top: 22px;
-      padding: 22px;
+    .catalogue-page h4 {
+      margin: 0;
+      color: var(--deep);
+      font-size: 18px;
+      line-height: 1.15;
+    }
+
+    .catalogue-page p {
+      margin: 0;
+      color: rgba(31, 38, 37, .68);
+      font-size: 14px;
+    }
+
+    .catalogue-page-price {
+      margin-top: auto;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 6px;
+    }
+
+    .catalogue-page-price strong {
+      color: var(--deep);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .catalogue-page-price span {
+      color: rgba(31, 38, 37, .52);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .catalogue-summary {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 24px;
       border: 1px solid rgba(77, 115, 122, .18);
       border-radius: var(--radius);
       background: linear-gradient(135deg, rgba(77, 115, 122, .08), rgba(255, 253, 248, .96));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
       opacity: 0;
       transform: translateY(18px);
       transition:
@@ -977,27 +1112,35 @@
         border-color .62s var(--ease-premium);
     }
 
-    .catalogue-feature.open .catalogue-download {
+    .catalogue-feature.open .catalogue-summary {
       opacity: 1;
       transform: none;
     }
 
-    .catalogue-download:hover {
+    .catalogue-summary:hover {
       border-color: rgba(77, 115, 122, .34);
       box-shadow: 0 20px 44px rgba(19, 34, 36, .1);
     }
 
-    .catalogue-download strong {
+    .catalogue-summary strong {
       display: block;
       color: var(--deep);
       font-size: 20px;
       line-height: 1.15;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    .catalogue-download span {
+    .catalogue-summary span {
+      display: block;
       color: rgba(31, 38, 37, .66);
       font-size: 14px;
+    }
+
+    .catalogue-summary-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
     }
 
     .service-grid {
@@ -1808,6 +1951,9 @@
         grid-template-columns: 1fr;
       }
       .catalogue-pages {
+        grid-template-columns: 1fr 1fr;
+      }
+      .catalogue-browser-head {
         grid-template-columns: 1fr;
       }
       .partner-grid {
@@ -1903,11 +2049,14 @@
       .catalogue-thumb {
         width: 74px;
       }
-      .catalogue-download {
+      .catalogue-summary {
         align-items: stretch;
         flex-direction: column;
       }
-      .catalogue-download .button {
+      .catalogue-summary-actions {
+        justify-content: stretch;
+      }
+      .catalogue-summary-actions .button {
         width: 100%;
       }
       .review-cta .button {
@@ -1928,6 +2077,15 @@
       }
       .partner-grid {
         grid-template-columns: 1fr 1fr;
+      }
+      .catalogue-pages {
+        grid-template-columns: 1fr;
+      }
+      .catalogue-filter-row {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
       }
       .partner-card {
         min-height: 104px;
@@ -2106,22 +2264,150 @@
             </span>
           </button>
           <div class="catalogue-panel" id="catalogue-panel">
-            <div class="catalogue-pages" aria-label="Inner Living product catalogue preview pages">
-              <figure class="catalogue-page"><img src="assets/catalogue-page-1.jpg" alt="Page 1 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 1</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-2.jpg" alt="Page 2 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 2</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-3.jpg" alt="Page 3 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 3</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-4.jpg" alt="Page 4 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 4</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-5.jpg" alt="Page 5 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 5</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-6.jpg" alt="Page 6 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 6</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-7.jpg" alt="Page 7 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 7</figcaption></figure>
-              <figure class="catalogue-page"><img src="assets/catalogue-page-8.jpg" alt="Page 8 of the Inner Living product catalogue."><figcaption class="catalogue-page-label">Page 8</figcaption></figure>
-            </div>
-            <div class="catalogue-download">
+            <div class="catalogue-browser-head">
               <div>
-                <strong>Download the full catalogue</strong>
-                <span>Save the PDF for offline sharing, client approvals or later reference.</span>
+                <p>Browse by collection</p>
+                <h3>Choose a category, then explore the collection.</h3>
               </div>
-              <a class="button" href="assets/inner-living-product-catalogue.pdf" download="Inner-Living-Product-Catalogue.pdf">Download catalogue</a>
+              <div class="catalogue-filter-row" aria-label="Catalogue category filters">
+                <button class="catalogue-filter active" type="button" data-catalogue-filter="all" aria-pressed="true">All</button>
+                <button class="catalogue-filter" type="button" data-catalogue-filter="headboards" aria-pressed="false">Headboards</button>
+                <button class="catalogue-filter" type="button" data-catalogue-filter="chairs" aria-pressed="false">Chairs</button>
+                <button class="catalogue-filter" type="button" data-catalogue-filter="sofas" aria-pressed="false">Sofas</button>
+              </div>
+            </div>
+            <div class="catalogue-results-meta">
+              <span><strong id="catalogue-results-count">13</strong> pieces showing</span>
+              <span>Stuart Graham Revival Fabric collection</span>
+            </div>
+            <div class="catalogue-pages" aria-label="Inner Living product collection">
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-scalloped.jpg" alt="Scalloped Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Scalloped Headboard</h4>
+                  <p>Made to order for calmer, softer bedroom styling.</p>
+                  <div class="catalogue-page-price"><strong>From $150</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-plain.jpg" alt="Plain Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Plain Headboard</h4>
+                  <p>A simple upholstered profile for clean, timeless rooms.</p>
+                  <div class="catalogue-page-price"><strong>From $128</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-vertical-narrow.jpg" alt="Vertical Narrow Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Vertical Narrow Headboard</h4>
+                  <p>Vertical rhythm and texture for more tailored bedrooms.</p>
+                  <div class="catalogue-page-price"><strong>From $150</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-vertical-panelled.jpg" alt="Vertical Panelled Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Vertical Panelled Headboard</h4>
+                  <p>Clean panel lines with a quieter, structured feel.</p>
+                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-bordered.jpg" alt="Bordered Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Bordered Headboard</h4>
+                  <p>Framed detailing for a more classic upholstered look.</p>
+                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-boxed.jpg" alt="Boxed Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Boxed Headboard</h4>
+                  <p>Square panel styling with a more architectural presence.</p>
+                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-cavendish.jpg" alt="Cavendish Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Cavendish Headboard</h4>
+                  <p>A fuller statement shape for softer classic bedrooms.</p>
+                  <div class="catalogue-page-price"><strong>From $161</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="headboards">
+                <div class="catalogue-page-media"><img src="assets/catalogue-headboard-horizontal-panelled.jpg" alt="Horizontal Panelled Headboard from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Headboards</span>
+                  <h4>Horizontal Panelled Headboard</h4>
+                  <p>Wide channels that help a bedroom feel broader and calmer.</p>
+                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="chairs">
+                <div class="catalogue-page-media"><img src="assets/catalogue-chair-single-seater.jpg" alt="Single Seater chair from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Chairs</span>
+                  <h4>Single Seater</h4>
+                  <p>Compact upholstered seating for bedrooms, lounges and waiting areas.</p>
+                  <div class="catalogue-page-price"><strong>$289</strong><span>Order on enquiry</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="chairs">
+                <div class="catalogue-page-media"><img src="assets/catalogue-chair-armless.jpg" alt="Armless Chair from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Chairs</span>
+                  <h4>Armless Chair</h4>
+                  <p>A lighter accent chair for layering into smaller spaces.</p>
+                  <div class="catalogue-page-price"><strong>$179</strong><span>Order on enquiry</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="sofas">
+                <div class="catalogue-page-media"><img src="assets/catalogue-sofa-2-seater.jpg" alt="2 Seater Couch from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Sofas</span>
+                  <h4>2 Seater Couch</h4>
+                  <p>Neat everyday seating with a relaxed, tailored silhouette.</p>
+                  <div class="catalogue-page-price"><strong>$470</strong><span>Order on enquiry</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="sofas">
+                <div class="catalogue-page-media"><img src="assets/catalogue-sofa-3-seater.jpg" alt="3 Seater Couch from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Sofas</span>
+                  <h4>3 Seater Couch</h4>
+                  <p>Roomier family seating with soft, balanced proportions.</p>
+                  <div class="catalogue-page-price"><strong>$638</strong><span>Order on enquiry</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="sofas">
+                <div class="catalogue-page-media"><img src="assets/catalogue-sofa-corner.jpg" alt="Corner Couch from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Sofas</span>
+                  <h4>Corner Couch</h4>
+                  <p>A larger layout piece for practical lounges and family rooms.</p>
+                  <div class="catalogue-page-price"><strong>$817</strong><span>Order on enquiry</span></div>
+                </div>
+              </article>
+            </div>
+            <div class="catalogue-summary">
+              <div>
+                <strong>Need the full catalogue and price guide?</strong>
+                <span>Download the PDF for the complete supplied cards, price summary by size, and ordering notes for custom enquiries.</span>
+              </div>
+              <div class="catalogue-summary-actions">
+                <a class="button secondary" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27m%20looking%20through%20the%20catalogue%20and%20would%20like%20to%20enquire%20about%20a%20piece." target="_blank" rel="noreferrer">Enquire now</a>
+                <a class="button" href="assets/inner-living-product-catalogue.pdf" download="Inner-Living-Product-Catalogue.pdf">Download catalogue</a>
+              </div>
             </div>
           </div>
         </div>
@@ -2377,6 +2663,9 @@
     const catalogueSection = document.querySelector(".catalogue-feature");
     const catalogueToggle = document.querySelector(".catalogue-toggle");
     const catalogueTriggers = document.querySelectorAll("[data-open-catalogue]");
+    const catalogueFilters = document.querySelectorAll("[data-catalogue-filter]");
+    const catalogueItems = document.querySelectorAll("[data-catalogue-category]");
+    const catalogueResultsCount = document.querySelector("#catalogue-results-count");
 
     const updateScrollDetails = () => {
       const scrollTop = window.scrollY;
@@ -2417,6 +2706,11 @@
       if (!catalogueSection || !catalogueToggle) return;
       catalogueSection.classList.toggle("open", open);
       catalogueToggle.setAttribute("aria-expanded", String(open));
+      if (open) {
+        catalogueSection.querySelectorAll(".catalogue-intro, .catalogue-accordion").forEach((element) => {
+          element.classList.add("visible");
+        });
+      }
     };
 
     catalogueToggle?.addEventListener("click", () => {
@@ -2440,6 +2734,29 @@
     if (window.location.hash === "#catalogue") {
       setCatalogueOpen(true);
     }
+
+    const applyCatalogueFilter = (filter) => {
+      let visibleCount = 0;
+      catalogueItems.forEach((item) => {
+        const matches = filter === "all" || item.dataset.catalogueCategory === filter;
+        item.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+      if (catalogueResultsCount) catalogueResultsCount.textContent = String(visibleCount);
+      catalogueFilters.forEach((button) => {
+        const isActive = button.dataset.catalogueFilter === filter;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    };
+
+    catalogueFilters.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyCatalogueFilter(button.dataset.catalogueFilter || "all");
+      });
+    });
+
+    applyCatalogueFilter("all");
 
     const carousel = document.querySelector(".hero-carousel");
     const carouselSlides = document.querySelectorAll(".carousel-slide");
