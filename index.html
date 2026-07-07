@@ -981,6 +981,37 @@
       font-size: 13px;
     }
 
+    .catalogue-size-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .catalogue-size-cell {
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(31, 38, 37, .08);
+      border-radius: 7px;
+      background: #faf8f2;
+    }
+
+    .catalogue-size-cell span {
+      display: block;
+      color: rgba(31, 38, 37, .5);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .catalogue-size-cell strong {
+      display: block;
+      color: var(--deep);
+      font-size: 15px;
+      line-height: 1;
+    }
+
     .catalogue-page-price {
       margin-top: auto;
       display: flex;
@@ -1002,6 +1033,10 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    .catalogue-page-price.single {
+      padding-top: 2px;
     }
 
     .catalogue-summary {
@@ -2195,7 +2230,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Scalloped Headboard</h4>
                   <p>Made to order for calmer, softer bedroom styling.</p>
-                  <div class="catalogue-page-price"><strong>From $150</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Scalloped Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$150</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$179</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$201</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$224</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2204,7 +2244,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Plain Headboard</h4>
                   <p>A simple upholstered profile for clean, timeless rooms.</p>
-                  <div class="catalogue-page-price"><strong>From $128</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Plain Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$128</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$157</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$179</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$202</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2213,7 +2258,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Vertical Narrow Headboard</h4>
                   <p>Vertical rhythm and texture for more tailored bedrooms.</p>
-                  <div class="catalogue-page-price"><strong>From $150</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Vertical Narrow Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$150</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$179</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$201</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$224</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2222,7 +2272,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Vertical Panelled Headboard</h4>
                   <p>Clean panel lines with a quieter, structured feel.</p>
-                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Vertical Panelled Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$139</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$168</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$190</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$213</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2231,7 +2286,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Bordered Headboard</h4>
                   <p>Framed detailing for a more classic upholstered look.</p>
-                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Bordered Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$139</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$168</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$190</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$213</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2240,7 +2300,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Boxed Headboard</h4>
                   <p>Square panel styling with a more architectural presence.</p>
-                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Boxed Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$139</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$168</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$190</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$213</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2249,7 +2314,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Cavendish Headboard</h4>
                   <p>A fuller statement shape for softer classic bedrooms.</p>
-                  <div class="catalogue-page-price"><strong>From $161</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Cavendish Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$161</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$190</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$212</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$235</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2258,7 +2328,12 @@
                   <span class="catalogue-page-tag">Headboards</span>
                   <h4>Horizontal Panelled Headboard</h4>
                   <p>Wide channels that help a bedroom feel broader and calmer.</p>
-                  <div class="catalogue-page-price"><strong>From $139</strong><span>Custom sizes</span></div>
+                  <div class="catalogue-size-grid" aria-label="Horizontal Panelled Headboard size pricing">
+                    <div class="catalogue-size-cell"><span>3/4 or Single</span><strong>$139</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$168</strong></div>
+                    <div class="catalogue-size-cell"><span>Queen</span><strong>$190</strong></div>
+                    <div class="catalogue-size-cell"><span>King</span><strong>$213</strong></div>
+                  </div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="chairs">
@@ -2267,7 +2342,7 @@
                   <span class="catalogue-page-tag">Chairs</span>
                   <h4>Single Seater</h4>
                   <p>Compact upholstered seating for bedrooms, lounges and waiting areas.</p>
-                  <div class="catalogue-page-price"><strong>$289</strong><span>Order on enquiry</span></div>
+                  <div class="catalogue-page-price single"><strong>$289</strong><span>Single price</span></div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="chairs">
@@ -2276,7 +2351,7 @@
                   <span class="catalogue-page-tag">Chairs</span>
                   <h4>Armless Chair</h4>
                   <p>A lighter accent chair for layering into smaller spaces.</p>
-                  <div class="catalogue-page-price"><strong>$179</strong><span>Order on enquiry</span></div>
+                  <div class="catalogue-page-price single"><strong>$179</strong><span>Single price</span></div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="sofas">
@@ -2285,7 +2360,7 @@
                   <span class="catalogue-page-tag">Sofas</span>
                   <h4>2 Seater Couch</h4>
                   <p>Neat everyday seating with a relaxed, tailored silhouette.</p>
-                  <div class="catalogue-page-price"><strong>$470</strong><span>Order on enquiry</span></div>
+                  <div class="catalogue-page-price single"><strong>$470</strong><span>Single price</span></div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="sofas">
@@ -2294,7 +2369,7 @@
                   <span class="catalogue-page-tag">Sofas</span>
                   <h4>3 Seater Couch</h4>
                   <p>Roomier family seating with soft, balanced proportions.</p>
-                  <div class="catalogue-page-price"><strong>$638</strong><span>Order on enquiry</span></div>
+                  <div class="catalogue-page-price single"><strong>$638</strong><span>Single price</span></div>
                 </div>
               </article>
               <article class="catalogue-page" data-catalogue-category="sofas">
@@ -2303,7 +2378,7 @@
                   <span class="catalogue-page-tag">Sofas</span>
                   <h4>Corner Couch</h4>
                   <p>A larger layout piece for practical lounges and family rooms.</p>
-                  <div class="catalogue-page-price"><strong>$817</strong><span>Order on enquiry</span></div>
+                  <div class="catalogue-page-price single"><strong>$817</strong><span>Single price</span></div>
                 </div>
               </article>
             </div>
