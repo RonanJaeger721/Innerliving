@@ -998,6 +998,10 @@
       margin-top: 2px;
     }
 
+    .catalogue-size-grid.three-up {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .catalogue-size-cell {
       padding: 10px 10px 9px;
       border: 1px solid rgba(31, 38, 37, .08);
@@ -1020,6 +1024,16 @@
       color: var(--deep);
       font-size: 15px;
       line-height: 1;
+    }
+
+    .catalogue-size-grid.three-up .catalogue-size-cell {
+      min-width: 0;
+      padding-inline: 8px;
+    }
+
+    .catalogue-size-grid.three-up .catalogue-size-cell span {
+      letter-spacing: .7px;
+      font-size: 9px;
     }
 
     .catalogue-page-price {
@@ -2227,11 +2241,13 @@
                 <button class="catalogue-filter" type="button" data-catalogue-filter="headboards" aria-pressed="false">Headboards</button>
                 <button class="catalogue-filter" type="button" data-catalogue-filter="chairs" aria-pressed="false">Chairs</button>
                 <button class="catalogue-filter" type="button" data-catalogue-filter="sofas" aria-pressed="false">Sofas</button>
+                <button class="catalogue-filter" type="button" data-catalogue-filter="window-treatments" aria-pressed="false">Window Treatments</button>
+                <button class="catalogue-filter" type="button" data-catalogue-filter="hardware" aria-pressed="false">Hardware</button>
               </div>
             </div>
             <div class="catalogue-results-meta">
-              <span><strong id="catalogue-results-count">13</strong> pieces showing</span>
-              <span>Stuart Graham Revival Fabric collection</span>
+              <span><strong id="catalogue-results-count">30</strong> pieces showing</span>
+              <span>Furniture, window treatments and curtain hardware</span>
             </div>
             <div class="catalogue-pages" aria-label="Inner Living product collection">
               <article class="catalogue-page" data-catalogue-category="headboards">
@@ -2389,6 +2405,200 @@
                   <h4>Corner Couch</h4>
                   <p>A larger layout piece for practical lounges and family rooms.</p>
                   <div class="catalogue-page-price single"><strong>$817</strong><span>Single price</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-casing.jpg?v=20260707-catalogue2" alt="Casing per drop from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Casing per drop</h4>
+                  <p>A softer gathered finish for calm curtain installations.</p>
+                  <div class="catalogue-page-price single"><strong>$7.00</strong><span>Ex VAT per drop</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-eyelet-wave.jpg?v=20260707-catalogue2" alt="Eyelet Wave per drop from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Eyelet Wave per drop</h4>
+                  <p>A modern wave heading with eyelet hardware styling.</p>
+                  <div class="catalogue-page-price single"><strong>$16.00</strong><span>Ex VAT per drop</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-wave-tape.jpg?v=20260707-catalogue2" alt="Wave Tape per drop from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Wave Tape per drop</h4>
+                  <p>Clean, even folds for a tailored wave curtain look.</p>
+                  <div class="catalogue-page-price single"><strong>$12.00</strong><span>Ex VAT per drop</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-roman-blind.jpg?v=20260707-catalogue2" alt="Roman Blind per square metre from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Roman Blind per sqm</h4>
+                  <p>Structured fabric blinds for softer, more refined rooms.</p>
+                  <div class="catalogue-page-price single"><strong>$60.00</strong><span>Ex VAT per sqm</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-pinch-pleat.jpg?v=20260707-catalogue2" alt="Pinch Pleat per drop from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Pinch Pleat per drop</h4>
+                  <p>A classic fuller heading suited to more formal spaces.</p>
+                  <div class="catalogue-page-price single"><strong>$18.00</strong><span>Ex VAT per drop</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="window-treatments">
+                <div class="catalogue-page-media"><img src="assets/catalogue-treatment-tripple-tape.jpg?v=20260707-catalogue2" alt="Tripple Tape per drop from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Window Treatments</span>
+                  <h4>Tripple Tape per drop</h4>
+                  <p>Neat pleated heading detail for fuller curtains and drapes.</p>
+                  <div class="catalogue-page-price single"><strong>$10.00</strong><span>Ex VAT per drop</span></div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-rods-powdercoated-kit.jpg?v=20260707-catalogue2" alt="Powdercoated rod kits from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Powdercoated rod kits</h4>
+                  <p>Per metre pricing, including 2 brackets and finials.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Powdercoated rod kit pricing">
+                    <div class="catalogue-size-cell"><span>19mm</span><strong>$43.48</strong></div>
+                    <div class="catalogue-size-cell"><span>25mm</span><strong>$45.59</strong></div>
+                    <div class="catalogue-size-cell"><span>32mm</span><strong>$48.83</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-wave-tracks.jpg?v=20260707-catalogue2" alt="Single and double wave tracks from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Wave tracks</h4>
+                  <p>Smooth-running tracks for softer modern curtain movement.</p>
+                  <div class="catalogue-size-grid" aria-label="Wave track pricing">
+                    <div class="catalogue-size-cell"><span>Single</span><strong>$26.69</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$55.34</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-chase-decorator-38mm.jpg?v=20260707-catalogue2" alt="38mm single and double wave chase decorators from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>38mm chase decorator</h4>
+                  <p>Statement track styling for more finished curtain details.</p>
+                  <div class="catalogue-size-grid" aria-label="38mm chase decorator pricing">
+                    <div class="catalogue-size-cell"><span>Single Wave</span><strong>$48.18</strong></div>
+                    <div class="catalogue-size-cell"><span>Double Wave</span><strong>$76.82</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-rods-powdercoated-meter.jpg?v=20260707-catalogue2" alt="Powdercoated rods per metre from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Powdercoated rods per metre</h4>
+                  <p>Plain rod pricing for custom curtain hardware builds.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Powdercoated rod per metre pricing">
+                    <div class="catalogue-size-cell"><span>19mm</span><strong>$6.35</strong></div>
+                    <div class="catalogue-size-cell"><span>25mm</span><strong>$8.46</strong></div>
+                    <div class="catalogue-size-cell"><span>32mm</span><strong>$11.70</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-cube-chase-decorator-50mm.jpg?v=20260707-catalogue2" alt="50mm cube single and double wave chase decorators from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>50mm cube chase decorator</h4>
+                  <p>A cleaner squared profile for more architectural window lines.</p>
+                  <div class="catalogue-size-grid" aria-label="50mm cube chase decorator pricing">
+                    <div class="catalogue-size-cell"><span>Single Wave</span><strong>$50.13</strong></div>
+                    <div class="catalogue-size-cell"><span>Double Wave</span><strong>$80.73</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-tie-backs.jpg?v=20260707-catalogue2" alt="Decorative tie backs from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Decorative tie backs</h4>
+                  <p>Natural-finish holdbacks for layered curtain styling.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Decorative tie back pricing">
+                    <div class="catalogue-size-cell"><span>Plain</span><strong>$10.67</strong></div>
+                    <div class="catalogue-size-cell"><span>Crook</span><strong>$10.70</strong></div>
+                    <div class="catalogue-size-cell"><span>Ndoro</span><strong>$9.88</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-brackets.jpg?v=20260707-catalogue2" alt="Curtain brackets from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Curtain brackets</h4>
+                  <p>Core support brackets in natural finish for rod installations.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Curtain bracket pricing">
+                    <div class="catalogue-size-cell"><span>Basic</span><strong>$5.45</strong></div>
+                    <div class="catalogue-size-cell"><span>Simple</span><strong>$3.49</strong></div>
+                    <div class="catalogue-size-cell"><span>Double</span><strong>$9.04</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-wood-finials.jpg?v=20260707-catalogue2" alt="Wood-look finials from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Wood-look finials</h4>
+                  <p>Natural-finish decorative ends for warmer rod detailing.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Wood-look finial pricing">
+                    <div class="catalogue-size-cell"><span>Twisted Cone</span><strong>$10.32</strong></div>
+                    <div class="catalogue-size-cell"><span>Single Twirl</span><strong>$8.13</strong></div>
+                    <div class="catalogue-size-cell"><span>Ndoro Open</span><strong>$9.38</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-metal-finials.jpg?v=20260707-catalogue2" alt="Metal finials and collars from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Metal finials and collars</h4>
+                  <p>Powdercoated and natural-finish end details for custom rods.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Metal finial pricing">
+                    <div class="catalogue-size-cell"><span>Flower</span><strong>$9.21</strong></div>
+                    <div class="catalogue-size-cell"><span>Ball</span><strong>$11.08</strong></div>
+                    <div class="catalogue-size-cell"><span>Ring Collar</span><strong>$9.20</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-rods-natural-finish.jpg?v=20260707-catalogue2" alt="Natural-finish rods per metre from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Natural-finish rods per metre</h4>
+                  <p>Warm-toned rod options for more classic window fittings.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Natural-finish rod per metre pricing">
+                    <div class="catalogue-size-cell"><span>19mm</span><strong>$4.89</strong></div>
+                    <div class="catalogue-size-cell"><span>25mm</span><strong>$6.51</strong></div>
+                    <div class="catalogue-size-cell"><span>32mm</span><strong>$9.00</strong></div>
+                  </div>
+                </div>
+              </article>
+              <article class="catalogue-page" data-catalogue-category="hardware">
+                <div class="catalogue-page-media"><img src="assets/catalogue-hardware-ndoro-finials.jpg?v=20260707-catalogue2" alt="Ndoro-style finials from the Inner Living catalogue."></div>
+                <div class="catalogue-page-body">
+                  <span class="catalogue-page-tag">Hardware</span>
+                  <h4>Ndoro-style finials</h4>
+                  <p>Curved decorative finials for more expressive curtain rods.</p>
+                  <div class="catalogue-size-grid three-up" aria-label="Ndoro-style finial pricing">
+                    <div class="catalogue-size-cell"><span>Closed</span><strong>$9.10</strong></div>
+                    <div class="catalogue-size-cell"><span>Open</span><strong>$7.46</strong></div>
+                    <div class="catalogue-size-cell"><span>Twirl Half</span><strong>$8.37</strong></div>
+                  </div>
                 </div>
               </article>
             </div>
