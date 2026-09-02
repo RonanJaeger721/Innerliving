@@ -1179,6 +1179,199 @@
       border-top: 1px solid rgba(31, 38, 37, .08);
     }
 
+    .renovations {
+      background: #dfe6e1;
+      overflow: hidden;
+      scroll-margin-top: 92px;
+    }
+
+    .renovation-story,
+    .renovation-gallery,
+    .renovation-scope {
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .renovation-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+      gap: clamp(24px, 5vw, 78px);
+      align-items: center;
+      margin-bottom: clamp(32px, 5vw, 58px);
+    }
+
+    .renovation-hero-image {
+      position: relative;
+      min-height: 530px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--deep);
+      box-shadow: 0 28px 64px rgba(19, 34, 36, .14);
+    }
+
+    .renovation-hero-image img {
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      position: absolute;
+      object-fit: cover;
+      transition: transform .85s var(--ease-premium);
+    }
+
+    .renovation-hero-image:hover img {
+      transform: scale(1.025);
+    }
+
+    .renovation-image-caption {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      max-width: 260px;
+      padding: 13px 15px;
+      color: var(--white);
+      background: rgba(19, 34, 36, .82);
+      backdrop-filter: blur(8px);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .renovation-copy h3 {
+      color: var(--teal);
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+    }
+
+    .renovation-copy > p {
+      color: rgba(31, 38, 37, .75);
+      font-size: 18px;
+      line-height: 1.58;
+      margin-bottom: 26px;
+    }
+
+    .renovation-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      counter-reset: renovation-step;
+    }
+
+    .renovation-steps li {
+      min-height: 112px;
+      padding: 17px;
+      border-top: 1px solid rgba(31, 38, 37, .18);
+      background: rgba(255, 253, 248, .42);
+    }
+
+    .renovation-steps li::before {
+      counter-increment: renovation-step;
+      content: "0" counter(renovation-step);
+      display: block;
+      margin-bottom: 7px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .renovation-steps strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .renovation-gallery {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .9fr;
+      grid-template-rows: 240px 240px;
+      gap: 14px;
+    }
+
+    .renovation-gallery figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--deep);
+      min-width: 0;
+    }
+
+    .renovation-gallery figure:first-child {
+      grid-row: span 2;
+    }
+
+    .renovation-gallery figure:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .renovation-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s var(--ease-premium), opacity .5s ease;
+    }
+
+    .renovation-gallery figure:hover img {
+      transform: scale(1.035);
+      opacity: .9;
+    }
+
+    .renovation-gallery figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      padding: 7px 10px;
+      color: var(--white);
+      background: rgba(19, 34, 36, .76);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .renovation-scope {
+      display: grid;
+      grid-template-columns: minmax(220px, .68fr) minmax(280px, 1fr);
+      gap: clamp(22px, 5vw, 76px);
+      align-items: start;
+      padding-top: clamp(40px, 6vw, 72px);
+    }
+
+    .renovation-scope h3 {
+      color: var(--deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 3.8vw, 48px);
+      line-height: 1.04;
+      margin: 0;
+    }
+
+    .renovation-scope-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .renovation-scope-list li {
+      padding: 15px 0;
+      border-top: 1px solid rgba(31, 38, 37, .16);
+      color: rgba(31, 38, 37, .78);
+      font-size: 15px;
+    }
+
+    .renovation-scope-list li::before {
+      content: "+";
+      margin-right: 9px;
+      color: var(--teal);
+      font-weight: 800;
+    }
+
     .team {
       background: #f0eee6;
       overflow: hidden;
@@ -1918,6 +2111,13 @@
       .testimonial-grid {
         grid-template-columns: 1fr;
       }
+      .renovation-story,
+      .renovation-scope {
+        grid-template-columns: 1fr;
+      }
+      .renovation-hero-image {
+        min-height: 470px;
+      }
       .catalogue-pages {
         grid-template-columns: 1fr 1fr;
       }
@@ -2066,6 +2266,27 @@
       .project-grid {
         grid-template-columns: 1fr;
       }
+      .renovation-hero-image {
+        min-height: min(128vw, 500px);
+      }
+      .renovation-copy > p {
+        font-size: 16px;
+      }
+      .renovation-steps,
+      .renovation-scope-list {
+        grid-template-columns: 1fr;
+      }
+      .renovation-gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 170px 190px;
+      }
+      .renovation-gallery figure:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .renovation-gallery figure:nth-child(4) {
+        grid-column: span 2;
+      }
       .hero-carousel {
         min-height: 360px;
         height: 68vh;
@@ -2125,8 +2346,8 @@
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
       <a href="#catalogue" data-open-catalogue="true">Catalogue</a>
+      <a href="#renovations">Renovations</a>
       <a href="#partners">Partners</a>
-      <a href="#work">Work</a>
       <a href="#team">Team</a>
       <a href="#tips">Tips</a>
       <a href="#visit">Visit</a>
@@ -2140,8 +2361,8 @@
     <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
       <a href="#services">Services</a>
       <a href="#catalogue" data-open-catalogue="true">Catalogue</a>
+      <a href="#renovations">Renovations</a>
       <a href="#partners">Partners</a>
-      <a href="#work">Work</a>
       <a href="#team">Team</a>
       <a href="#tips">Design tips</a>
       <a href="#visit">Visit us</a>
@@ -2789,6 +3010,69 @@
       </div>
     </section>
 
+    <section id="renovations" class="renovations" aria-labelledby="renovations-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Renovations & Project Management</p>
+          <h2 id="renovations-title">One team, from the first plan to the final handover.</h2>
+        </div>
+        <p>Inner Living manages complete renovation projects with a clear eye on the finish and a firm hand on the process. We coordinate every moving part so the work is properly planned, managed and completed with care.</p>
+      </div>
+
+      <div class="renovation-story">
+        <figure class="renovation-hero-image">
+          <img src="assets/renovation-covered-deck.jpg" alt="Completed covered outdoor deck and renovation by Inner Living.">
+          <figcaption class="renovation-image-caption">Outdoor living upgrade: composite decking, covered patio and considered access.</figcaption>
+        </figure>
+        <div class="renovation-copy">
+          <h3>Comprehensive project management</h3>
+          <p>From the initial planning stages through to completion, Inner Living brings the right people, materials and decisions together. We coordinate building, plumbing, electrical work and every other part of the project so clients have one trusted team overseeing the full journey.</p>
+          <ol class="renovation-steps">
+            <li><strong>Plan the project</strong></li>
+            <li><strong>Coordinate every trade</strong></li>
+            <li><strong>Manage the build</strong></li>
+            <li><strong>Complete the finish</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="renovation-gallery" aria-label="Selected Inner Living renovation work">
+        <figure>
+          <img src="assets/renovation-interior-lighting.jpg" alt="Renovated open-plan interior with exposed beams, lighting and tiled floor.">
+          <figcaption>Open-plan interior renewal</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/renovation-kitchen-island.jpg" alt="New kitchen island and pendant lights in a renovated interior.">
+          <figcaption>Kitchen and living spaces</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/renovation-bathroom.jpg" alt="Bathroom renovation with timber vanity, vessel basin and tiled shower.">
+          <figcaption>Bathroom finishes</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/renovation-access-ramp.jpg" alt="Outdoor access ramp with composite decking and black steel railings.">
+          <figcaption>Decking, access and exterior works</figcaption>
+        </figure>
+      </div>
+
+      <div class="renovation-scope">
+        <div>
+          <p class="eyebrow">What We Manage</p>
+          <h3>Built, coordinated and finished as one considered whole.</h3>
+        </div>
+        <ul class="renovation-scope-list">
+          <li>Renovation planning and project coordination</li>
+          <li>Building works and structural alterations</li>
+          <li>Plumbing and electrical coordination</li>
+          <li>Flooring, ceilings, lighting and paint finishes</li>
+          <li>Kitchens, bathrooms and bespoke joinery</li>
+          <li>Decking, patios, outdoor rooms and access solutions</li>
+          <li>Interior styling, soft furnishings and final fitment</li>
+          <li>Fabrication, railings and custom exterior details</li>
+        </ul>
+      </div>
+    </section>
+
     <section id="partners" class="partners" aria-labelledby="partners-title">
       <div class="section-head">
         <div>
@@ -3174,7 +3458,7 @@
     });
 
     const revealTargets = document.querySelectorAll(
-      ".section-head, .catalogue-intro, .catalogue-accordion, .service-card, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
+      ".section-head, .catalogue-intro, .catalogue-accordion, .service-card, .renovation-story, .renovation-gallery, .renovation-scope, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
