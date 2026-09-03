@@ -124,11 +124,11 @@
       --carousel-speed: 2800ms;
       --text-meta: 11px;
       --text-small: 13px;
-      --text-body: 16px;
-      --heading-card: clamp(18px, 1.6vw, 22px);
-      --heading-section: clamp(32px, 3vw, 48px);
-      --heading-hero: clamp(48px, 5vw, 72px);
-      --section-space: clamp(68px, 7vw, 92px);
+      --text-body: 15px;
+      --heading-card: clamp(16px, 1.4vw, 20px);
+      --heading-section: clamp(36px, 3vw, 44px);
+      --heading-hero: clamp(48px, 4vw, 64px);
+      --section-space: clamp(72px, 6vw, 88px);
     }
 
     * { box-sizing: border-box; }
@@ -388,14 +388,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 0 18px;
+      min-height: 44px;
+      padding: 0 22px;
       border: 1px solid transparent;
-      border-radius: 999px;
+      border-radius: 10px;
       background: var(--teal);
       color: var(--white);
       font-size: 13px;
-      font-weight: 650;
+      font-weight: 600;
       box-shadow: 0 14px 30px rgba(77, 115, 122, .24);
       transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
       white-space: nowrap;
@@ -422,7 +422,7 @@
     .hero {
       min-height: 86vh;
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+      grid-template-columns: minmax(0, .97fr) minmax(360px, 1.03fr);
       gap: clamp(28px, 3vw, 54px);
       align-items: center;
       padding: 100px clamp(20px, 5vw, 76px) 38px;
@@ -435,9 +435,9 @@
       color: var(--clay);
       text-transform: uppercase;
       font-size: var(--text-meta);
-      font-weight: 650;
-      letter-spacing: .12em;
-      margin: 0 0 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      margin: 0 0 20px;
     }
 
     h1, h2, h3, p { margin-top: 0; }
@@ -445,18 +445,18 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: var(--heading-hero);
       font-weight: 400;
-      line-height: 1.03;
+      line-height: 1.02;
       letter-spacing: -.025em;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       color: var(--deep);
-      max-width: 620px;
+      max-width: 640px;
     }
 
     .lead {
-      font-size: clamp(16px, 1.35vw, 18px);
+      font-size: clamp(15px, 1.25vw, 16px);
       color: rgba(31, 38, 37, .76);
-      max-width: 62ch;
-      line-height: 1.62;
+      max-width: 590px;
+      line-height: 1.6;
       margin-bottom: 26px;
     }
 
@@ -464,7 +464,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .hero-stats {
@@ -481,7 +481,7 @@
 
     .stat strong {
       display: block;
-      font-size: clamp(22px, 3vw, 34px);
+      font-size: clamp(28px, 2.3vw, 34px);
       color: var(--teal);
       line-height: 1;
       margin-bottom: 8px;
@@ -490,7 +490,7 @@
     .stat span {
       color: rgba(31, 38, 37, .66);
       font-size: 13px;
-      font-weight: 650;
+      font-weight: 600;
     }
 
     .hero-visual {
@@ -569,9 +569,9 @@
     .carousel-meta span {
       display: block;
       color: rgba(255, 253, 248, .72);
-      font-size: 11px;
-      font-weight: 650;
-      letter-spacing: 1.3px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
       text-transform: uppercase;
       margin-bottom: 7px;
     }
@@ -579,7 +579,7 @@
     .carousel-meta strong {
       display: block;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(23px, 2.3vw, 31px);
+      font-size: clamp(25px, 2vw, 30px);
       font-weight: 400;
       line-height: 1.1;
       letter-spacing: 0;
@@ -657,7 +657,7 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--deep);
       font-size: var(--heading-section);
-      line-height: 1.1;
+      line-height: 1.08;
       letter-spacing: -.02em;
       font-weight: 400;
       margin-bottom: 0;
@@ -669,7 +669,7 @@
       margin-bottom: 0;
       max-width: 64ch;
       font-size: var(--text-body);
-      line-height: 1.62;
+      line-height: 1.6;
     }
 
     .about {
@@ -1368,8 +1368,8 @@
     .renovation-scope h3 {
       color: var(--deep);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(30px, 3vw, 42px);
-      line-height: 1.1;
+      font-size: clamp(28px, 2.8vw, 40px);
+      line-height: 1.08;
       font-weight: 400;
       margin: 0;
     }
@@ -2063,7 +2063,7 @@
       display: block;
       font-family: Georgia, "Times New Roman", serif;
       color: var(--white);
-      font-size: clamp(24px, 2.4vw, 32px);
+      font-size: clamp(22px, 2.2vw, 30px);
       line-height: 1.1;
       font-weight: 400;
       letter-spacing: 0;
@@ -2207,7 +2207,7 @@
       }
       .eyebrow {
         font-size: 10px;
-        letter-spacing: .11em;
+        letter-spacing: .1em;
         overflow-wrap: anywhere;
       }
       .hero-actions {
@@ -2221,12 +2221,18 @@
         max-width: 100%;
       }
       h1 {
-        font-size: clamp(38px, 9.4vw, 44px);
-        line-height: 1.05;
+        font-size: clamp(36px, 9vw, 40px);
+        line-height: 1.03;
         overflow-wrap: break-word;
+      }
+      h2 {
+        font-size: clamp(30px, 8vw, 34px);
+        line-height: 1.1;
       }
       .lead {
         max-width: 100%;
+        font-size: 15px;
+        line-height: 1.6;
         overflow-wrap: break-word;
       }
       .review-cta {
@@ -2403,8 +2409,8 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div>
-        <p class="eyebrow">Established 2001 - Harare, Zimbabwe</p>
-        <h1 id="hero-title">Inner Living Interiors &ndash; Where Beautiful Living Begins</h1>
+        <p class="eyebrow">Established 2001 · Harare, Zimbabwe</p>
+        <h1 id="hero-title">Inner Living Interiors<br>Where Beautiful Living Begins</h1>
         <p class="lead">Inner Living is an Interiors and Exteriors Studio for refined homes, lodges and offices, from design consultation and fabric selection to custom furniture, fabrication and installation.</p>
         <div class="hero-actions">
           <a class="button" href="https://wa.me/263783106505?text=Hi%20Inner%20Living%2C%20I%27d%20like%20to%20book%20a%20consultation.">Consult now</a>
