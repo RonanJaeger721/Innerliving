@@ -1357,6 +1357,60 @@
       letter-spacing: .02em;
     }
 
+    .renovation-film {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(280px, .48fr);
+      gap: clamp(32px, 7vw, 96px);
+      align-items: center;
+      max-width: 1180px;
+      margin: clamp(42px, 6vw, 72px) auto 0;
+      padding: clamp(36px, 5vw, 56px) 0;
+      border-top: 1px solid rgba(31, 38, 37, .16);
+      border-bottom: 1px solid rgba(31, 38, 37, .16);
+    }
+
+    .renovation-film-copy {
+      max-width: 520px;
+    }
+
+    .renovation-film-copy .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .renovation-film-copy h3 {
+      margin: 0 0 16px;
+      color: var(--deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 2.8vw, 40px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+
+    .renovation-film-copy p:last-child {
+      margin: 0;
+      color: rgba(31, 38, 37, .75);
+      font-size: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .renovation-film-frame {
+      width: min(100%, 360px);
+      aspect-ratio: 9 / 16;
+      margin-left: auto;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--deep);
+      box-shadow: 0 24px 52px rgba(19, 34, 36, .14);
+    }
+
+    .renovation-film-frame video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .renovation-scope {
       display: grid;
       grid-template-columns: minmax(220px, .68fr) minmax(280px, 1fr);
@@ -2139,8 +2193,13 @@
         grid-template-columns: 1fr;
       }
       .renovation-story,
-      .renovation-scope {
+      .renovation-scope,
+      .renovation-film {
         grid-template-columns: 1fr;
+      }
+
+      .renovation-film-frame {
+        margin-left: 0;
       }
       .renovation-hero-image {
         min-height: 470px;
@@ -2321,6 +2380,10 @@
       .renovation-gallery figure:nth-child(4) {
         grid-column: span 2;
       }
+      .renovation-film-frame {
+        width: min(100%, 330px);
+        margin: 0 auto;
+      }
       .hero-carousel {
         min-height: 360px;
         height: 68vh;
@@ -2440,6 +2503,12 @@
           <figure class="carousel-slide" data-kicker="Exterior fabrication" data-title="Staircases made to order.">
             <img src="assets/staircase-exterior.jpg" alt="Exterior steel staircase with balustrades on a brick building.">
           </figure>
+          <figure class="carousel-slide" data-kicker="Window treatments" data-title="Light, height and a considered finish.">
+            <img src="assets/carousel-double-height-window.jpeg" alt="Double-height interior with a black framed window, patterned curtains and sheers.">
+          </figure>
+          <figure class="carousel-slide" data-kicker="Bathroom finishes" data-title="Small spaces, beautifully resolved.">
+            <img src="assets/carousel-bathroom-finish.jpeg" alt="Finished bathroom with green wall tiles, a black framed mirror and sculptural pendant light.">
+          </figure>
           <div class="carousel-meta">
             <div>
               <span>Wallpapers</span>
@@ -2451,6 +2520,8 @@
               <button class="carousel-dot" type="button" aria-label="Show pool fencing"></button>
               <button class="carousel-dot" type="button" aria-label="Show interior staircase"></button>
               <button class="carousel-dot" type="button" aria-label="Show exterior staircase"></button>
+              <button class="carousel-dot" type="button" aria-label="Show double-height window treatment"></button>
+              <button class="carousel-dot" type="button" aria-label="Show bathroom finishes"></button>
             </div>
           </div>
           <div class="carousel-progress" aria-hidden="true"><span></span></div>
@@ -3089,6 +3160,20 @@
         </figure>
       </div>
 
+      <div class="renovation-film">
+        <div class="renovation-film-copy">
+          <p class="eyebrow">Renovation Detail</p>
+          <h3>See the finish in motion.</h3>
+          <p>A closer look at a completed bathroom, where material, lighting and practical details are brought together as one calm, considered space.</p>
+        </div>
+        <div class="renovation-film-frame">
+          <video controls muted loop playsinline preload="metadata" aria-label="Completed bathroom renovation walkthrough">
+            <source src="assets/renovation-project-film.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
       <div class="renovation-scope">
         <div>
           <p class="eyebrow">What We Manage</p>
@@ -3492,7 +3577,7 @@
     });
 
     const revealTargets = document.querySelectorAll(
-      ".section-head, .catalogue-intro, .catalogue-accordion, .service-card, .renovation-story, .renovation-gallery, .renovation-scope, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
+      ".section-head, .catalogue-intro, .catalogue-accordion, .service-card, .renovation-story, .renovation-gallery, .renovation-film, .renovation-scope, .partner-card, .team-card, .project, .quote, .review-cta, .visit-panel, .map"
     );
     revealTargets.forEach((target, index) => {
       target.classList.add("motion-reveal");
